@@ -1,0 +1,915 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="/jquery-3.4.1.min.js"></script>
+		<script src="/draggabilly.pkgd.min.js"></script>
+		
+		<!--<link rel="stylesheet" href="/jquery.mCustomScrollbar.css" />-->
+		<!--<link rel="stylesheet" href="/customScrollbar.css"/>-->
+		<!--<script src="/jquery.mCustomScrollbar.js"></script>-->
+		
+		<script src="scrollbar.js"></script>
+		<link rel="stylesheet" href="scrollbar.css"/>
+		
+		<script src="rangeslider.js"></script>
+		<link rel="stylesheet" href="rangesliderCustom.css"/>
+		
+		
+        
+        <style>
+			
+/*==============================*/
+/*GENERAL STUFF*/
+/*==============================*/
+            * { 
+				box-sizing: border-box;
+				cursor: inherit;
+				user-select: none;
+			}
+			a, .button {
+				cursor: pointer;
+			}
+            :root {
+				--main-color: #000;
+                --border-width: 1px;
+				/*--collection-size: 36px;*/
+            }
+			::selection {
+				background-color: transparent;
+			}
+            body {
+                font-family: jetbrains mono;
+				color: var(--main-color);
+				margin: 0;
+				overflow: hidden;
+				cursor: default;
+            }
+			#container {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+            .underline { text-decoration: underline; }
+			.divider {
+				width: 100%;
+				border-bottom: 1px solid #000;
+			}
+			.divider:last-child {
+				display: none;
+			}
+			
+			
+			
+            #description {
+                font-family: recursive;
+                font-size: 16px;
+                font-variation-settings: "MONO" 1, "CASL" 1, "wght" 500, "slnt" -15, "ital" 0.5;
+                padding: 10px;
+            }
+			
+			
+/*==============================*/
+/*Gloabal Window Elements*/
+/*==============================*/
+			.window {
+				position: absolute;
+			}
+			.window.minified, #collection.minified {
+				width: 250px;
+			}
+			.header {
+                font-size: 12px;
+				font-weight: 800;
+                text-transform: uppercase;
+                padding: 12px 14px;
+                border: var(--border-width) solid var(--main-color);
+				cursor: grab;
+            }
+			.header:active {
+				cursor: grabbing;
+			}
+			.toolbar {
+				font-size: 10px;
+				line-height: 1;
+			}
+			.window-section {
+				border: solid var(--main-color);;
+				border-width: 0 var(--border-width) var(--border-width) var(--border-width);
+			}
+			
+/*==============================*/
+/*Collection Window*/
+/*==============================*/
+			#collection {
+				width: 400px;
+				height: auto;
+				box-shadow: 5px 5px var(--main-color);
+				background: #fff;
+			}
+			/*------------------------------*/
+			/*TOOLBAR*/
+			/*------------------------------*/
+			#collection .toolbar>* {
+				float: left;
+			}
+			#collection .minify-button {
+				position: absolute;
+				right: 12px;
+				top: 12px;
+				width: 16px;
+				height: 16px;
+				border: 1px solid rgb(0, 0, 0);
+			}
+			#input-box {
+				width: calc(100% - 100px);
+				white-space: nowrap;
+				overflow: hidden;
+				cursor: text;
+				padding: 10px 14px;
+				font-feature-settings: 'calt' 0;
+			}
+			#input-box:focus {
+				border: none;
+				outline: none;
+			}
+			#input-box::selection {
+				background-color: rgba(0,0,0,0.99);
+				color: #fff;
+			}
+			#input-box.blank {
+				opacity: 1;
+			}
+			#input-box * { display: none; }
+			#collection-size-option {
+				width: 100px;
+				padding: 0;
+				border-left: 1px solid #000;
+			}
+			#collection-size-option .button {
+				width: 30px;
+				height: 30px;
+				padding: 10px 0;
+				text-align: center;
+			}
+			#collection-size-option .button:active {
+				background: #000;
+				color: #fff;
+			}
+			#collection-size-option .minus-button {
+				float: left;
+				padding-left: 0px;
+			}
+			#collection-size-option .plus-button {
+				float: right;
+				padding-right: 0px;
+			}
+			#collection-size-option .value {
+				float: left;
+				white-space: nowrap;
+				overflow: visible;
+				margin: auto;
+				text-align: center;
+				width: calc(100% - 60px);
+				padding: 10px 0;
+			}
+			/*------------------------------*/
+			/*TYPEFACE LIST*/
+			/*------------------------------*/
+			#typeface-list {
+				height: 700px;
+				--collection-size: 0px;
+			}
+			.header:not(:active)~#typeface-list .typeface-item:hover {
+				background: var(--main-color);
+				outline: var(--main-color) solid 1px;
+				cursor: pointer;
+			}
+			.header:not(:active)~#typeface-list .typeface-item:hover * {
+				color: #fff;
+				cursor: pointer;
+			}
+			.typeface-item:hover .typeface-item-typeface span {
+				/*opacity: 0.8;*/
+			}
+			.typeface-item .info {
+				font-size: 10px;
+				padding: 10px 14px 0 14px;
+			}
+			.typeface-item .info>* {
+				opacity: 1;
+				white-space: nowrap;
+			}
+			.typeface-item .info>*:not(:last-child) {
+				float: left;
+				margin-right: 20px;
+			}
+			.typeface-item .info>*:last-child {
+				float: right;
+			}
+			.typeface-item .info-name {
+				width: 80px;
+			}
+			.header:not(:active)~#typeface-list .typeface-item .info-link:hover {
+				opacity: 1;
+			}
+			.typeface-item .info-link a {
+				color: unset;
+				text-decoration: none;
+			}
+			.header:not(:active)~#typeface-list .typeface-item .info-link a:hover {
+				text-decoration: underline;
+				cursor: alias;
+			}
+			.typeface-item-typeface {
+				padding: 0 calc(15px - (var(--collection-size) / 12)) calc(var(--collection-size) * 0.25 + 5px) calc(15px - (var(--collection-size) / 12));
+				font-size: var(--collection-size);
+				height: calc(var(--collection-size) * 0.9 + 5px);
+				box-sizing: content-box;
+				line-height: 1;
+				overflow: hidden;
+			}
+			/*.typeface-item-typeface span:hover {
+				cursor: pointer;
+				opacity: 0.8;
+			}*/
+			.typeface-item-typeface::before {
+				display: inline-block;
+				height: 100%;
+				content: '';
+			}
+			.baseline { 
+				vertical-align: baseline;
+				white-space: nowrap;
+				width: 100%;
+				display: inline-flex;
+				line-height: 0;
+			}
+			.short-divider {
+				display: block;
+				height: 0px;
+				margin: 0 10px;
+				border-bottom: var(--border-width) solid var(--main-color);
+			}
+			.short-divider:last-child {
+				display: none;
+			}
+
+/*==============================*/
+/*Typeface Window*/
+/*==============================*/
+			.typeface-window {
+				width: 600px;
+				height: auto;
+				box-shadow: 5px 5px var(--main-color);
+				background: #fff;
+			}
+			.typeface-window .close-button {
+				position: absolute;
+				right: 12px;
+				top: 12px;
+				width: 16px;
+				height: 16px;
+				border: 1px solid #000;
+			}
+			.typeface-window .close-button::before {
+				content: "";
+				display: block;
+				background: #000;
+				width: 8px;
+				height: 1px;
+				margin: 0 auto;
+				top: 50%;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%,-50%) rotate(45deg);
+			}
+			.typeface-window .close-button::after {
+				content: "";
+				display: block;
+				background: #000;
+				width: 8px;
+				height: 1px;
+				margin: 0 auto;
+				top: 50%;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%,-50%) rotate(-45deg);
+			}
+			.typeface-window .minify-button {
+				position: absolute;
+				right: 38px;
+				top: 12px;
+				width: 16px;
+				height: 16px;
+				border: 1px solid rgb(0, 0, 0);
+			}
+			.minify-button::before, .minify-button::after {
+				content: "";
+				display: block;
+				background: #000;
+				width: 6px;
+				height: 1px;
+				margin: 0 auto;
+				top: 50%;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			.window.minified .minify-button::after {
+				transform: translate(-50%,-50%) rotate(90deg);
+			}
+			.typeface-window .toolbar {
+				position: absolute;
+				width: calc(100% - 46px);
+				z-index: 1;
+				left: 15px;
+				top: 54px;
+				height: 0;
+			}
+			.typeface-window .toolbar>div {
+				background: #fff;
+				border: 1px solid #000;
+			}
+			/*------------------------------*/
+			/*TOOLBAR OPTIONS*/
+			.typeface-window .toolbar .button.is-active {
+				background: #000;
+				color: #fff;
+			}
+			.button svg {
+				fill: #000;
+			}
+			.button.is-active svg {
+				fill: #fff;
+			}
+			/*------------------------------*/
+			/*STYLE OPTIONS*/
+			.sample-style-option {
+				/*left: 15px;
+				top: 14px;*/
+				width: 150px;
+				cursor: pointer;
+				position: relative;
+				float: left;
+				margin-right: 6px;
+			}
+			.sample-style-option .button {
+				padding: 10px 14px;
+			}
+			.sample-style-option .arrow {
+				position: absolute;
+				display: block;
+				top: 0;
+				right: 0;
+				margin: 10px 14px;
+				width: 7px;
+				white-space: nowrap;
+				overflow: hidden;
+				transform: rotate(-90deg);
+			}
+			.sample-style-option .options {
+				display: none;
+				position: absolute;
+				background: #fff;
+				border: 1px solid #000;
+				top: 100%;
+				left: -1px;
+				right: -1px;
+			}
+			.sample-style-option.is-active .options {
+				display: block;
+			}
+			.sample-style-option.is-active .button {
+				background: #000;
+				color: #fff;
+			}
+			.sample-style-option.is-active .button .arrow {
+				transform: rotate(90deg);
+			}
+			.sample-style-option .options .option {
+				padding: 10px 14px;
+			}
+			.sample-style-option .options .option:hover {
+				background: #000;
+				color: #fff;
+				outline: 1px solid #000;
+			}
+			
+			/*ITALIC BUTTON*/
+			.sample-italic-option {
+				padding: 10px 0;
+				font-style: italic;
+				float: left;
+				width: 32px;
+				text-align: center;
+			}
+			
+			/*VARIABLE OPTIONS*/
+			.sample-variable-option {
+				width: 150px;
+				float: left;
+				position: relative;
+				margin-right: 6px;
+			}
+			.sample-variable-option .button {
+				padding: 10px 14px;
+			}
+			.sample-variable-option .arrow {
+				position: absolute;
+				display: block;
+				top: 0;
+				right: 0;
+				margin: 10px 14px;
+				width: 7px;
+				white-space: nowrap;
+				overflow: hidden;
+				transform: rotate(-90deg);
+			}
+			.sample-variable-option .button~* {
+				display: none;
+			}
+			.sample-variable-option.is-active .button {
+				background: #000;
+				color: #fff;
+			}
+			.sample-variable-option.is-active .button~* {
+				display: block;
+			}
+			.sample-variable-option.is-active .button .arrow {
+				transform: rotate(90deg);
+			}
+			.var-unit {
+				padding: 12px 14px 10px 14px;
+			}
+			.var-info {
+				margin-bottom: 3px;
+			}
+			.var-name {
+				float: left;
+			}
+			.var-value {
+				float: right;
+			}
+			.var-slider {
+				padding: 7px 0;
+			}
+			
+			/*FORMAT OPTIONS*/
+			.sample-format-option {
+				float: right;
+				width: 131px;
+			}
+			.typeface-window .toolbar>.sample-format-option {
+				border: none;
+				background: none;
+			}
+			.sample-format-option>div {
+				border: 1px solid #000;
+				background: #fff;
+			}
+			.sample-format-option>div:not(:first-child) {
+				margin-top: 6px;
+			}
+			.sample-option-icon {
+				float: left;
+				padding: 10px 0;
+				width: 30px;
+				text-align: center;
+			}
+			.sample-format-option .vertical-divider {
+				float: left;
+				height: 30px;
+				border-left: 1px solid #000;
+			}
+			.sample-format-option>div:not(:first-child) {
+				display: none;
+			}
+			.sample-format-option:hover>div {
+				display: block;
+			}
+			
+			/*SIZE OPTIONS*/
+			.sample-size-icon span {
+				font-size: 7px;
+				font-weight: 700;
+				letter-spacing: -1px;
+			}
+			.sample-size-option {
+				
+			}
+			
+			/*tracking & leading*/
+			.sample-tracking-icon span:first-child, .sample-leading-icon span:first-child {
+				transform: translateX(5px);
+				display: inline-block;
+			}
+			.sample-tracking-icon span:last-child, .sample-leading-icon span:last-child {
+				transform: translateX(-5px);
+				display: inline-block;
+			}
+			.sample-leading-icon {
+				transform: rotate(90deg);
+			}
+			
+			/*buttons & value*/
+			.sample-format-option .button {
+				width: 30px;
+				height: 30px;
+				padding: 10px 0;
+				text-align: center;
+			}
+			.sample-format-option .button:active {
+				background: #000;
+				color: #fff;
+			}
+			.sample-format-option .minus-button {
+				float: left;
+				padding-left: 0px;
+			}
+			.sample-format-option .plus-button {
+				float: right;
+				padding-right: 0px;
+			}
+			.sample-format-option .value {
+				float: left;
+				white-space: nowrap;
+				overflow: visible;
+				margin: auto;
+				text-align: center;
+				width: calc(100% - 91px);
+				padding: 10px 0;
+			}
+			
+			/*OPENTYPE OPTIONS*/
+			.sample-opentype-option {
+				float: right;
+				width: 32px;
+				margin-right: 6px;
+			}
+			.typeface-window .toolbar>.sample-opentype-option {
+				border: none;
+				background: none;
+			}
+			.sample-opentype-option>div {
+				border: 1px solid #000;
+				background: #fff;
+				padding: 10px 0;
+				text-align: center;
+			}
+			.sample-opentype-option>div:not(:first-child) {
+				margin-top: 6px;
+				display: none;
+				padding: 0;
+			}
+			.sample-opentype-option:hover>div {
+				display: block;
+			}
+			.sample-opentype-option svg {
+				width: 30px;
+				height: 30px;
+			}
+			
+			/*PARAGRAPH OPTIONS*/
+			.sample-paragraph-option {
+				float: right;
+				width: 32px;
+				margin-right: 6px;
+			}
+			.typeface-window .toolbar>.sample-paragraph-option {
+				border: none;
+				background: none;
+			}
+			.sample-paragraph-option>div {
+				border: 1px solid #000;
+				background: #fff;
+				padding: 10px 0;
+				text-align: center;
+			}
+			.sample-paragraph-option>div:not(:first-child) {
+				margin-top: 6px;
+			}
+			.sample-paragraph-option>div:not(:first-child) {
+				display: none;
+			}
+			.sample-paragraph-option:hover>div {
+				display: block;
+			}
+			/*ALLCAPS OPTIONS*/
+			.sample-allcaps-option {
+			}
+			
+			/*SAMPLE*/
+			.sample { height: 400px; }
+			.sample-string, .sample-string * {
+				user-select: text;
+			}
+			.sample-string {
+				padding: 60px 16px 0.3em 16px;
+				/*hyphens: auto;*/
+				cursor: text;
+				min-height: 100%;
+				overflow: hidden;
+/*				white-space: pre-line;*/
+			}
+			.sample-string * { cursor: text; }
+			.sample-string:focus, .sample-string *:focus {
+				border: none;
+				outline: none;
+			}
+			.sample-string::selection, .sample-string *::selection {
+				background-color: rgba(0,0,0,0.99);
+				color: #fff;
+			}
+			
+			/*ALIGN OPTIONS*/
+			.sample-align-option {
+				float: right;
+				margin-right: 6px;
+				width: 32px;
+				height: 32px;
+				padding: 10px 9px;
+			}
+			.sample-align-option>div {
+				border-top: 1px solid #000;
+				margin-bottom: 2px;
+			}
+			.sample-align-option .bar-1 { width: 10px; }
+			.sample-align-option .bar-2 { width: 8px; }
+			.sample-align-option .bar-3 { width: 12px; }
+			.sample-align-option .bar-4 { width: 6px; }
+			.sample-align-option.opt-left>div { margin-left: 0;}
+			.sample-align-option.opt-center>div { margin-left: auto; margin-right: auto; }
+			.sample-align-option.opt-right>div { margin-left: auto; margin-right: 0;}
+			
+/*==============================*/
+/*Scrollbar Customization*/
+/*==============================*/
+			.sb-container {
+				background: #fff;
+				border-left: 1px solid #000;
+			}
+			.sb-button {
+				background: #fff;
+			}
+			.sb-button.is-active {
+				background: #000;
+			}
+			.sb-button.is-active::before {
+				color: #fff;
+			}
+			.sb-up {
+				border-bottom: 1px solid #000;
+			}
+			.sb-up::before {
+				content: '>';
+				display: block;
+				position: absolute;
+				overflow: visible;
+				white-space: nowrap;
+				color: #000;
+				font-size: 10px;
+				font-weight: 400;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%) rotate(-90deg);
+				line-height: 1;
+			}
+			.sb-down {
+				border-top: 1px solid #000;
+			}
+			.sb-down::before {
+				content: '>';
+				display: block;
+				position: absolute;
+				overflow: visible;
+				white-space: nowrap;
+				color: #000;
+				font-size: 10px;
+				font-weight: 400;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%) rotate(90deg) scaleY(-1);
+				line-height: 1;
+			}
+			.sb-track {
+				background-image: linear-gradient(45deg, black 25%, transparent 25%), linear-gradient(45deg, transparent 75%, black 75%, black);
+				background-size: 2px 2px;
+				background-position: 1px 1px, 2px 2px;
+			}
+			.sb-scrollbar {
+				background: #fff;
+				outline: 1px solid #000;
+			}
+
+			
+/*==============================*/
+/*Others*/
+/*==============================*/
+			.checker {
+				background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+				linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+				background-size: 4px 4px;
+				background-position: 0 0, 2px 2px;
+			}
+			.checker-light {
+				background-image: linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
+				linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa);
+				background-size: 4px 4px;
+				background-position: 0 0, 2px 2px;
+			}
+			.clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+        
+		</style>
+    </head>
+	
+    <body>
+		<div id="container">
+			<div id="description"><span class="underline">OPEN:TYPE</span> is a curated collection of free &amp; open-source typefaces.</div>
+			
+			<div id="collection" class="window">
+				<div class="header">Collection</div>
+				<div class="minify-button button"></div>
+				<div class="toolbar window-section clearfix">
+					<div id="input-box" class="blank" contenteditable="true" spellcheck="false">Type here...</div>
+					<div id="collection-size-option">
+						<div class="button minus-button">-</div>
+						<div class="value">0px</div>
+						<div class="button plus-button">+</div>
+					</div>
+				</div>
+				<div id="typeface-list" class="window-section">
+					<!--append typeface items-->
+					<!--
+					<div class="typeface-item" data-font="ApfelGrotezk">
+						<div class="info clearfix">
+							<div class="info-name">Apfel Grotezk</div>
+							<div class="info-style">2 styles</div>
+							<div class="info-link"><a href="http://www.collletttivo.it/" target="_blank">-&gt; Collletttivo</a></div>
+						</div>
+						<div class="typeface-item-typeface" style="font-family:Apfel Grotezk; ">
+							<span class="baseline">Apfel Grotezk</span>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+			
+<!--
+			<div class="window typeface-window" data-font="Metropolis">
+				<div class="header"></div>
+				<div class="close-button button"></div>
+				<div class="toolbar">
+-->
+					<!--<div class="sample-style-option">
+						<div class="button">
+							<div class="value"></div>
+							<div class="arrow">&lt;-</div>
+						</div>
+						<div class="options">
+							<div class="option" data-w="1" data-i="0">Thin</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="2" data-i="0">Extralight</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="3" data-i="0">Light</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="4" data-i="0">Regular</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="5" data-i="0">Medium</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="6" data-i="0">Semibold</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="7" data-i="0">Bold</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="8" data-i="0">Extrabold</div>
+							<div class="short-divider"></div>
+							<div class="option" data-w="9" data-i="0">Black</div>
+							<div class="short-divider"></div>
+						</div>
+					</div>-->
+					<!--<div class="sample-variable-option">
+						<div class="button">
+							<div class="var-title">Variable</div>
+							<div class="arrow">&lt;-</div>
+						</div>
+						<div class="divider"></div>
+						<div class="var-unit" data-v="wght">
+							<div class="var-info clearfix">
+								<div class="var-name"></div>
+								<div class="var-value"></div>
+							</div>
+							<div class="var-slider">
+								<input type="range" min="100" max="900" step="10" value="700">
+							</div>
+						</div>
+						<div class="divider"></div>
+						<div class="var-unit" data-v="wght">
+							<div class="var-info clearfix">
+								<div class="var-name"></div>
+								<div class="var-value"></div>
+							</div>
+							<div class="var-slider">
+								<input type="range" min="100" max="900" step="10" value="700">
+							</div>
+						</div>
+					</div>-->
+					<!--<div class="sample-italic-option button">I</div>-->
+					<!--<div class="sample-format-option">
+						<div class="sample-size-option clearfix">
+							<div class="sample-option-icon sample-size-icon"><span>T</span>T</div>
+							<div class="vertical-divider"></div>
+							<div class="button minus-button">-</div>
+							<div class="value">0px</div>
+							<div class="button plus-button">+</div>
+						</div>
+						<div class="sample-tracking-option clearfix">
+							<div class="sample-option-icon sample-tracking-icon"><span>&lt;-</span><span>-&gt;</span></div>
+							<div class="vertical-divider"></div>
+							<div class="button minus-button">-</div>
+							<div class="value">0</div>
+							<div class="button plus-button">+</div>
+						</div>
+						<div class="sample-leading-option clearfix">
+							<div class="sample-option-icon sample-leading-icon"><span>&lt;-</span><span>-&gt;</span></div>
+							<div class="vertical-divider"></div>
+							<div class="button minus-button">-</div>
+							<div class="value">0</div>
+							<div class="button plus-button">+</div>
+						</div>
+					</div>-->
+					<!--<div class="sample-allcaps-option button">AA</div>-->
+					<!--<div class="sample-align-option button opt-left">
+						<div class="bar-1"></div><div class="bar-2"></div><div class="bar-3"></div><div class="bar-4"></div>
+					</div>-->
+				<!--</div>
+				<div class="sample window-section">
+					<div class="sample-string" contenteditable="true" spellcheck="false"></div>
+				</div>
+				<div class="typeface-detail"></div>
+			</div>-->
+			
+		</div>
+		<div class="icons" style="display: none;">
+			<svg data-ot="salt" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M97,174c0-11,7-17,20-17h16v-4c0-7-6-11-13-11c-5,0-10,1-12,7h-9c2-11,12-15,22-15c12,0,21,6,21,22v34h-8v-10h-1
+	c-4,7-9,11-18,11C104,191,97,185,97,174z M117,183c8,0,16-4,16-12v-7h-16c-6,0-11,3-11,9C106,180,111,183,117,183z M192,135v10h-1
+	c-4-7-6-11-14-11c-12,0-18,10-18,20v18c0,12,6,19,18,19c7,0,10-4,14-10h1v9h9v-55H192z M192,169c0,8-4,14-13,14c-8,0-11-5-11-13v-16
+	c0-8,3-13,11-13s13,6,13,14V169z M182,97l15,22h-94v-8h78v-1l-3-2l-7-11H182z"/>
+			</svg>
+			<svg data-ot="liga" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M179,122c-4.088,0-7-2.299-7-5.999c0-3.745,3-6.001,7-6.001l3,0.001c4,0,7,2.263,7,6c0,3.708-3.088,6-7,6L179,122z M187,138
+		h-64v-11c0-4,2-6,6-6h16v-9h-16c-10,0-15,6-15,15v12H98v8h16v43h9v-43l55-0.001V182h-20v8h45v-8h-16V138z"/>
+			</svg>
+			<svg data-ot="dlig" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M134,144c-3-7-8-10-15-10c-9,0-18,5-18,16c0,10,5,13,15,15l10,2c6.099,1.2,9,4,9,8c0,6-5,8-11,8h-4c-4,0-9-2-10-7h-10
+		c1,11,10,15,20,15h3c12,0,21-4,21-16c0-11-6-14-16-16l-10-2c-5-1-8-2-8-7c0-6,5-8,11-8h2c6,0,10,3,11.499,7H144v-21c0-8,5-13,13-13
+		s13,5,13,13v7h-16v8h16v33c0,9,6,14,15,14h14v-8h-14c-4,0-6-2-6-6v-33h21v-8h-21v-6c0-14-9-22-22-22s-22,8-22,21v16H134z"/>
+			</svg>
+			<svg data-ot="smcp" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M169,178l-4,12h-11l20-54h13l20,54h-11l-4-12H169z M190,170l-8-20l-1-6h-1l-1,6l-8,20H190z M110,165l-6,25H93l20-79h13
+	l20,79h-11l-6-25H110z M128,157l-7-28l-1-9h-1l-1,9l-7,28H128z"/>
+			</svg>
+			<svg data-ot="swsh" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M186,194c-5,0-9-4-10-8l-19-75h-48c-12,0-22,10-22,22s9,22,22,22h6v-10h-5c-7,0-13-6-13-13s5-12,13-12h31l-18,70h11l6-25h20
+	l5,21c3,11,11,16,21,16c12,0,22-10,22-23v-7h-10v9C198,189,193,194,186,194z M141,157l7-28l1-9h2l1,9l7,28H141z"/>
+			</svg>
+			<svg data-ot="ss01" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M179,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H181c7,0,13-2,13-9c0-5-5-7-12-8l-6-1c-11-2-17-5-17-16
+	s7-16,20-16h2.768C193,81,200,85,202,95h-9.774C192,91,187,89,181.752,89H179c-6,0-11,2-11,8c0,5,4,7,11,8l5,1c11,2,19,4,19,16
+	c0,13-9,17-22,17H179z M118,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H120c7,0,13-2,13-9c0-5-5-7-12-8l-6-1
+	c-11-2-17-5-17-16s7-16,20-16h2.768C132,81,139,85,141,95h-9.774C131,91,126,89,120.752,89H118c-6,0-11,2-11,8c0,5,4,7,11,8l5,1
+	c11,2,19,4,19,16c0,13-9,17-22,17H118z M97,183c0-13,9-22,22-22h1c13,0,22,9,22,22v14c0,13-9,22-22,22h-1c-13,0-22-9-22-22V183z
+	 M120,211c8,0,13-6,13-14v-14c0-8-5-14-13-14h-1c-8,0-13,6-13,14v14c0,8,5,14,13,14H120z M158,210h19v-40h-1l-2,3l-15,10v-10l16-11
+	h11v48h17v8h-45V210z"/>
+			</svg>
+			<svg data-ot="ss02" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M179,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H181c7,0,13-2,13-9c0-5-5-7-12-8l-6-1c-11-2-17-5-17-16
+	s7-16,20-16h2.768C193,81,200,85,202,95h-9.774C192,91,187,89,181.752,89H179c-6,0-11,2-11,8c0,5,4,7,11,8l5,1c11,2,19,4,19,16
+	c0,13-9,17-22,17H179z M118,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H120c7,0,13-2,13-9c0-5-5-7-12-8l-6-1
+	c-11-2-17-5-17-16s7-16,20-16h2.768C132,81,139,85,141,95h-9.774C131,91,126,89,120.752,89H118c-6,0-11,2-11,8c0,5,4,7,11,8l5,1
+	c11,2,19,4,19,16c0,13-9,17-22,17H118z M97,183c0-13,9-22,22-22h1c13,0,22,9,22,22v14c0,13-9,22-22,22h-1c-13,0-22-9-22-22V183z
+	 M120,211c8,0,13-6,13-14v-14c0-8-5-14-13-14h-1c-8,0-13,6-13,14v14c0,8,5,14,13,14H120z M203,180c0,14-7,18-19,23l-10.122,4.1
+	L168,209v1h35v8h-45v-14l13-4c10-4,23-8,23-19c0-7-5-11-13-11s-14,4-14,12h-9c0-13,11-20,23-20S203,169,203,180z"/>
+			</svg>
+			<svg data-ot="ss03" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M179,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H181c7,0,13-2,13-9c0-5-5-7-12-8l-6-1c-11-2-17-5-17-16
+	s7-16,20-16h2.768C193,81,200,85,202,95h-9.774C192,91,187,89,181.752,89H179c-6,0-11,2-11,8c0,5,4,7,11,8l5,1c11,2,19,4,19,16
+	c0,13-9,17-22,17H179z M118,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H120c7,0,13-2,13-9c0-5-5-7-12-8l-6-1
+	c-11-2-17-5-17-16s7-16,20-16h2.768C132,81,139,85,141,95h-9.774C131,91,126,89,120.752,89H118c-6,0-11,2-11,8c0,5,4,7,11,8l5,1
+	c11,2,19,4,19,16c0,13-9,17-22,17H118z M97,183c0-13,9-22,22-22h1c13,0,22,9,22,22v14c0,13-9,22-22,22h-1c-13,0-22-9-22-22V183z
+	 M120,211c8,0,13-6,13-14v-14c0-8-5-14-13-14h-1c-8,0-13,6-13,14v14c0,8,5,14,13,14H120z M180,184c13.424-0.28,23,4,23,17
+	c0,12-8,17-22,17s-23-5-23-17h9c1,6,6,9,14,9c9,0,14-4,14-10s-7-11-15-11h-10v-6l16-11l3-1v-1h-29v-8h41v8l-16,12l-5,1V184z"/>
+			</svg>
+			<svg data-ot="ss04" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+				<path d="M179,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H181c7,0,13-2,13-9c0-5-5-7-12-8l-6-1c-11-2-17-5-17-16
+	s7-16,20-16h2.768C193,81,200,85,202,95h-9.774C192,91,187,89,181.752,89H179c-6,0-11,2-11,8c0,5,4,7,11,8l5,1c11,2,19,4,19,16
+	c0,13-9,17-22,17H179z M118,139c-12,0-20-4-22-15h10c1.046,5.117,6.741,7.007,11.974,7H120c7,0,13-2,13-9c0-5-5-7-12-8l-6-1
+	c-11-2-17-5-17-16s7-16,20-16h2.768C132,81,139,85,141,95h-9.774C131,91,126,89,120.752,89H118c-6,0-11,2-11,8c0,5,4,7,11,8l5,1
+	c11,2,19,4,19,16c0,13-9,17-22,17H118z M97,183c0-13,9-22,22-22h1c13,0,22,9,22,22v14c0,13-9,22-22,22h-1c-13,0-22-9-22-22V183z
+	 M120,211c8,0,13-6,13-14v-14c0-8-5-14-13-14h-1c-8,0-13,6-13,14v14c0,8,5,14,13,14H120z M179,162h10l-22,34v4h19v-19h9v19h8v8h-8
+	v10h-9v-10h-28v-13L179,162z"/>
+			</svg>
+		</div>
+    </body>
+	<script src="fontData.js"></script>
+	<script src="main.js"></script>
+</html>

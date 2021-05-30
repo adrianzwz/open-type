@@ -1,0 +1,90 @@
+.rangeslider,
+.rangeslider__fill {
+/*
+	display: block;
+	-moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+*/
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+.rangeslider {
+/*
+	background: #e6e6e6;
+	position: relative;
+*/
+	background: #000;
+	position: relative;
+}
+
+.rangeslider--horizontal {
+/*
+	height: 20px;
+	width: 100%;
+*/
+	height: 1px;
+	width: 100%;
+}
+
+.rangeslider--vertical {
+	width: 1px;
+	min-height: 150px;
+	max-height: 100%;
+}
+
+.rangeslider--disabled {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+	opacity: 0.4;
+}
+
+.rangeslider__fill {
+	background: #000;
+	position: absolute;
+}
+.rangeslider--horizontal .rangeslider__fill {
+	top: 0;
+	height: 100%;
+}
+.rangeslider--vertical .rangeslider__fill {
+	bottom: 0;
+	width: 100%;
+}
+
+.rangeslider__handle {
+	background: #fff;
+	border: 1px solid #000;
+	cursor: pointer;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	border-radius: 100%
+}
+.rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
+	background: #000;
+}
+.rangeslider--horizontal .rangeslider__handle {
+top: -7px;
+touch-action: pan-y;
+-ms-touch-action: pan-y;
+}
+.rangeslider--vertical .rangeslider__handle {
+left: -7px;
+touch-action: pan-x;
+-ms-touch-action: pan-x;
+}
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle {
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
