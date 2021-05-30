@@ -3,7 +3,6 @@
     src: url('Spectral-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -11,7 +10,6 @@
     src: url('Spectral-BoldItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -19,7 +17,6 @@
     src: url('Spectral-ExtraBold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -27,7 +24,6 @@
     src: url('Spectral-ExtraLight.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -35,7 +31,6 @@
     src: url('Spectral-ExtraBoldItalic.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -43,7 +38,6 @@
     src: url('Spectral-ExtraLightItalic.ttf') format('truetype');
     font-weight: 200;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -51,7 +45,6 @@
     src: url('Spectral-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -59,7 +52,6 @@
     src: url('Spectral-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -67,7 +59,6 @@
     src: url('Spectral-LightItalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -75,7 +66,6 @@
     src: url('Spectral-MediumItalic.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
@@ -83,7 +73,6 @@
     src: url('Spectral-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -91,7 +80,6 @@
     src: url('Spectral-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -99,7 +87,6 @@
     src: url('Spectral-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
@@ -107,6 +94,5 @@
     src: url('Spectral-SemiBoldItalic.ttf') format('truetype');
     font-weight: 600;
     font-style: italic;
-    font-display: swap;
 }
 
