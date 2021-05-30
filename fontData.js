@@ -495,4 +495,55 @@ var FontCollectionData = {
 		foundry:		'',
 		release:		'',
 	},
+	
+	
+//====================================================================================================
+	'Newsreader': { 
+		name:			'Newsreader', 
+		style:			'42 styles (variable)', 
+		link:			'Production Type', 
+		linkURL:		'https://www.productiontype.com/family/newsreader',
+		displayStyle:	"font-variation-settings: 'wght' 800, 'opsz' 72;",
+		sizeAdjust:		1,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'For centuries newspapers were printed on paper and supplied physically to readers.',
+		sampleStyle:	{
+			sizeI:		5,
+			weightI: 	7,
+			italicI:	0,
+			tracking:	0, // in 1/1000 em
+			leading:	1.15,
+			align:		'left',
+			variable:	{
+				'wght':		600,
+				'opsz':		72,
+			},
+			openType:	{}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[],
+			hasItalic:	true,
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	800,
+					axisMin:	200,
+					axisStep:	10
+				},
+				'opsz':		{
+					axisName:	'Optical Size',
+					axisMax:	72,
+					axisMin:	6,
+					axisStep:	1
+				}
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Hugues Gentile',
+		foundry:		'',
+		release:		'',
+	},
 };
