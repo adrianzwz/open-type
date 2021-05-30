@@ -1,4 +1,18 @@
+/*HEPTA SLAB*/
 @font-face {
   font-family: "Hepta Slab";
   src: url("fonts/HeptaSlab-VariableFont_wght.ttf") format("opentype");
+}
+
+/*MINIPAX*/
+@import url("fonts/minipax.css");
+
+/*WORK SANS*/
+@font-face {
+  font-family: "Work Sans";
+  src: url("fonts/WorkSans[wght].ttf") format("opentype");
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("fonts/WorkSans-Italic[wght].ttf") format("opentype");
 }
