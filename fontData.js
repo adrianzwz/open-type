@@ -190,7 +190,7 @@ var FontCollectionData = {
 		foundry:		'',
 		release:		'',
 	},*/
-	'SpaceGrotesk': { 
+	/*'SpaceGrotesk': { 
 		name:			'Space Grotesk', 
 		style:			'5 styles', 
 		link:			'Florian Karsten', 
@@ -221,10 +221,59 @@ var FontCollectionData = {
 		designer:		'Florian Karsten',
 		foundry:		'',
 		release:		'',
+	},*/
+	'SpaceGrotesk': { 
+		name:			'Space Grotesk', 
+		style:			'5 styles (variable)', 
+		link:			'Florian Karsten', 
+		linkURL:		'https://fonts.floriankarsten.com/space-grotesk',
+		displayStyle:	"font-variation-settings: 'wght' 500;",
+		sizeAdjust:		1,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'Voyager 1 became the first human-made object to leave our Solar System into interstellar space.',
+		sampleStyle:	{
+			sizeI:		9,
+			weightI: 	7,
+			italicI:	0,
+			tracking:	0, // in 1/1000 em
+			leading:	0.8,
+			align:		'left',
+			variable:	{
+				'wght':		700
+			},
+			openType:	{
+				'liga':	1,
+				'salt': 0,
+				'ss01': 0,
+				'ss02': 0,
+				'ss03': 0,
+				'ss04': 0,
+				'ss05': 0
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[],
+			hasItalic:	false,
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	700,
+					axisMin:	300,
+					axisStep:	10
+				}
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Florian Karsten',
+		foundry:		'',
+		release:		'',
 	},
 
 //====================================================================================================
-	'Metropolis': {
+	/*'Metropolis': {
 		name:			'Metropolis', 
 		style:			'18 styles', 
 		link:			'GitHub', 
@@ -256,7 +305,7 @@ var FontCollectionData = {
 		designer:		'Chris Simpson',
 		foundry:		'',
 		release:		'',
-	},
+	},*/
 
 //====================================================================================================
 	/*'Spectral': { 
