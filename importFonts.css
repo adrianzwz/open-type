@@ -10,6 +10,7 @@
 /*WORK SANS*/
 @font-face {
   font-family: "Work Sans";
+  font-style: normal;
   src: url("fonts/WorkSans[wght].ttf") format("opentype");
 }
 @font-face {
