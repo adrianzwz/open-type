@@ -16,3 +16,18 @@
   font-family: "Work Sans";
   src: url("fonts/WorkSans-Italic[wght].ttf") format("opentype");
 }
+
+/*SPACE GROTESK*/
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
+}
+
+/*SPECTRAL*/
+@import url("fonts/spectral.css");
+
+/*RECURSIVE*/
+@font-face {
+  font-family: "Recursive";
+  src: url("fonts/Recursive_VF_1.047.ttf") format("opentype");
+}
