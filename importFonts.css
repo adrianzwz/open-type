@@ -32,3 +32,15 @@
   font-family: "Recursive";
   src: url("fonts/Recursive_VF_1.047.ttf") format("opentype");
 }
+
+/*NEWSREADER*/
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  src: url("fonts/Newsreader-VariableFont_opsz,wght.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  src: url("fonts/Newsreader-Italic-VariableFont_opsz,wght.ttf") format("opentype");
+}
