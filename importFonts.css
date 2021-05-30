@@ -1,14 +1,18 @@
 /*JET BRAINS MONO*/
 @import url("fonts/jetBrainsMono.css");
 
+/*MINIPAX*/
+@import url("fonts/minipax.css");
+
+/*SPECTRAL*/
+@import url("fonts/spectral.css");
+
+
 /*HEPTA SLAB*/
 @font-face {
   font-family: "Hepta Slab";
   src: url("fonts/HeptaSlab-VariableFont_wght.ttf") format("opentype");
 }
-
-/*MINIPAX*/
-@import url("fonts/minipax.css");
 
 /*WORK SANS*/
 @font-face {
@@ -27,9 +31,6 @@
   font-family: "Space Grotesk";
   src: url("fonts/SpaceGrotesk-VariableFont_wght.ttf") format("opentype");
 }
-
-/*SPECTRAL*/
-@import url("fonts/spectral.css");
 
 /*RECURSIVE*/
 @font-face {
