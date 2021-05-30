@@ -14,6 +14,7 @@
 }
 @font-face {
   font-family: "Work Sans";
+  font-style: italic;
   src: url("fonts/WorkSans-Italic[wght].ttf") format("opentype");
 }
 
