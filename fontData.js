@@ -327,7 +327,7 @@ var FontCollectionData = {
 		style:			'14 styles', 
 		link:			'Production Type', 
 		linkURL:		'https://www.productiontype.com/family/spectral',
-		displayStyle:	"font-weight: 400; font-style: italic; font-feature-settings:'dlig';",
+		displayStyle:	"font-weight: 400; font-style: normal; font-feature-settings:'dlig';",
 		sizeAdjust:		1,
 		//----------------------------------------------------------------------------------------------------
 		sampleString:	'A spectrum of colors can be observed when white light is dispersed through a prism.',
@@ -503,7 +503,7 @@ var FontCollectionData = {
 		style:			'42 styles (variable)', 
 		link:			'Production Type', 
 		linkURL:		'https://www.productiontype.com/family/newsreader',
-		displayStyle:	"font-variation-settings: 'wght' 800, 'opsz' 72;",
+		displayStyle:	"font-variation-settings: 'wght' 600, 'opsz' 72;",
 		sizeAdjust:		1,
 		//----------------------------------------------------------------------------------------------------
 		sampleString:	'For centuries newspapers were printed on paper and supplied physically to readers.',
@@ -515,7 +515,7 @@ var FontCollectionData = {
 			leading:	1.15,
 			align:		'left',
 			variable:	{
-				'wght':		600,
+				'wght':		800,
 				'opsz':		72,
 			},
 			openType:	{}
