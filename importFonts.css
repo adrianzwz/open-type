@@ -1,12 +1,7 @@
 /*JET BRAINS MONO*/
-@import url("fonts/jetBrainsMono.css");
-
 /*MINIPAX*/
-@import url("fonts/minipax.css");
-
 /*SPECTRAL*/
-@import url("fonts/spectral.css");
-
+@import url("fonts/fontFace.css");
 
 /*HEPTA SLAB*/
 @font-face {
