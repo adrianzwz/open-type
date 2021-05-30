@@ -13,11 +13,11 @@
   font-style: normal;
   src: url("fonts/WorkSans[wght].ttf") format("opentype");
 }
-/*@font-face {
+@font-face {
   font-family: "Work Sans";
   font-style: italic;
   src: url("fonts/WorkSans-Italic[wght].ttf") format("opentype");
-}*/
+}
 
 /*SPACE GROTESK*/
 @font-face {
