@@ -496,7 +496,6 @@ var FontCollectionData = {
 		release:		'',
 	},
 	
-	
 //====================================================================================================
 	'Newsreader': { 
 		name:			'Newsreader', 
@@ -539,6 +538,60 @@ var FontCollectionData = {
 					axisMax:	72,
 					axisMin:	6,
 					axisStep:	1
+				}
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Hugues Gentile',
+		foundry:		'',
+		release:		'',
+	},
+	
+//====================================================================================================
+	'Inter': { 
+		name:			'Inter', 
+		style:			'18 styles (variable)', 
+		link:			'Inter', 
+		linkURL:		'https://rsms.me/inter/',
+		displayStyle:	"font-variation-settings: 'wght' 600, 'slnt' 0;",
+		sizeAdjust:		1,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'In Euclidean geometry, when two lines in a plane are not parallel, their intersection is the point at which they meet.',
+		sampleStyle:	{
+			sizeI:		5,
+			weightI: 	7,
+			italicI:	0,
+			tracking:	0, // in 1/1000 em
+			leading:	1.15,
+			align:		'left',
+			variable:	{
+				'wght':		800,
+				'slnt':		0,
+			},
+			openType:	{
+				'salt':	0,
+				'ss01': 0,
+				'ss02': 0
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[],
+			hasItalic:	false,
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	900,
+					axisMin:	100,
+					axisStep:	10
+				},
+				'slnt':		{
+					axisName:	'Slant',
+					axisMax:	0,
+					axisMin:	-10,
+					axisStep:	0.1
 				}
 			}
 		},
