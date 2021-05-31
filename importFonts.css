@@ -50,3 +50,21 @@
   font-family: "Inter";
   src: url("fonts/Inter.ttf") format("opentype");
 }
+
+/*COMMISSIONER*/
+@font-face {
+  font-family: "Commissioner";
+  src: url("fonts/Commissioner_VF_1.001.ttf") format("opentype");
+}
+
+/*CRIMSON PRO*/
+@font-face {
+  font-family: "Crimson Pro";
+  font-style: normal;
+  src: url("fonts/CrimsonPro-VariableFont_wght.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Crimson Pro";
+  font-style: italic;
+  src: url("fonts/CrimsonPro-Italic-VariableFont_wght.ttf") format("opentype");
+}
