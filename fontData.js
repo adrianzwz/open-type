@@ -597,7 +597,119 @@ var FontCollectionData = {
 		},
 		//----------------------------------------------------------------------------------------------------
 		description:	'',
-		designer:		'Hugues Gentile',
+		designer:		'Rasmus Andersson',
+		foundry:		'',
+		release:		'',
+	},
+	
+//====================================================================================================
+	'Commissioner': { 
+		name:			'Commissioner', 
+		style:			'54 styles (variable)', 
+		link:			'Google Fonts', 
+		linkURL:		'https://fonts.google.com/specimen/Commissioner',
+		displayStyle:	"font-variation-settings: 'wght' 500, 'slnt' 0, 'FLAR' 100, 'VOLM' 100;",
+		sizeAdjust:		1,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'In acoustics, loudness is the subjective perception of sound pressure.',
+		sampleStyle:	{
+			sizeI:		7,
+			weightI: 	7,
+			italicI:	0,
+			tracking:	0, // in 1/1000 em
+			leading:	1,
+			align:		'left',
+			variable:	{
+				'wght':		700,
+				'slnt':		0,
+				'FLAR':		100,
+				'VOLM':		100,
+			},
+			openType:	{
+				'liga':	1
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[],
+			hasItalic:	false,
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	900,
+					axisMin:	100,
+					axisStep:	10
+				},
+				'slnt':		{
+					axisName:	'Slant',
+					axisMax:	0,
+					axisMin:	-12,
+					axisStep:	0.1
+				},
+				'FLAR':		{
+					axisName:	'Flare',
+					axisMax:	100,
+					axisMin:	0,
+					axisStep:	1
+				},
+				'VOLM':		{
+					axisName:	'Volume',
+					axisMax:	100,
+					axisMin:	0,
+					axisStep:	1
+				}
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Kostas Bartsokas',
+		foundry:		'',
+		release:		'',
+	},
+	
+//====================================================================================================
+	'Crimson Pro': { 
+		name:			'Crimson Pro', 
+		style:			'16 styles (variable)', 
+		link:			'Google Fonts', 
+		linkURL:		'https://fonts.google.com/specimen/Crimson+Pro',
+		displayStyle:	"font-variation-settings: 'wght' 400;",
+		sizeAdjust:		1.05,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'Crimson is a rich, deep red color, inclining to purple. It originally meant the color of the kermes dye produced from a scale insect, Kermes vermilio, but the name is now sometimes also used as a generic term for slightly bluish-red colors that are between red and rose.',
+		sampleStyle:	{
+			sizeI:		4,
+			weightI: 	7,
+			italicI:	0,
+			tracking:	0, // in 1/1000 em
+			leading:	1.15,
+			align:		'left',
+			variable:	{
+				'wght':		400
+			},
+			openType:	{
+				'liga':	1,
+				'dlig': 1
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[],
+			hasItalic:	true,
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	900,
+					axisMin:	200,
+					axisStep:	10
+				}
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Jacques Le Bailly',
 		foundry:		'',
 		release:		'',
 	},
