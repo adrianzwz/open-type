@@ -559,11 +559,11 @@ var FontCollectionData = {
 		//----------------------------------------------------------------------------------------------------
 		sampleString:	'In Euclidean geometry, when two lines in a plane are not parallel, their intersection is the point at which they meet.',
 		sampleStyle:	{
-			sizeI:		5,
+			sizeI:		6,
 			weightI: 	7,
 			italicI:	0,
 			tracking:	0, // in 1/1000 em
-			leading:	1.15,
+			leading:	1,
 			align:		'left',
 			variable:	{
 				'wght':		800,
