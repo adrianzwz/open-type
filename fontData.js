@@ -620,7 +620,7 @@ var FontCollectionData = {
 			leading:	1,
 			align:		'left',
 			variable:	{
-				'wght':		700,
+				'wght':		900,
 				'slnt':		0,
 				'FLAR':		100,
 				'VOLM':		100,
@@ -675,7 +675,7 @@ var FontCollectionData = {
 		link:			'Google Fonts', 
 		linkURL:		'https://fonts.google.com/specimen/Crimson+Pro',
 		displayStyle:	"font-variation-settings: 'wght' 400;",
-		sizeAdjust:		1.05,
+		sizeAdjust:		1.1,
 		//----------------------------------------------------------------------------------------------------
 		sampleString:	'Crimson is a rich, deep red color, inclining to purple. It originally meant the color of the kermes dye produced from a scale insect, Kermes vermilio, but the name is now sometimes also used as a generic term for slightly bluish-red colors that are between red and rose.',
 		sampleStyle:	{
