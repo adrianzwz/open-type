@@ -44,3 +44,9 @@
   font-style: italic;
   src: url("fonts/Newsreader-Italic-VariableFont_opsz,wght.ttf") format("opentype");
 }
+
+/*INTER*/
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter.ttf") format("opentype");
+}
