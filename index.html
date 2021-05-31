@@ -32,7 +32,9 @@
 			}
             :root {
 				--main-color: #000;
-                --border-width: 1px;
+				--border-width: 1px;
+				--big-radius: 10px;
+				--small-radius: 5px;
 				/*--collection-size: 36px;*/
             }
 			::selection {
@@ -74,18 +76,23 @@
 /*==============================*/
 			.window {
 				position: absolute;
+				border-radius: var(--big-radius);
 			}
 			.window.minified, #collection.minified {
 				width: 250px;
 			}
 			.header {
-                font-size: 12px;
+                		font-size: 12px;
 				font-weight: 800;
-                text-transform: uppercase;
-                padding: 12px 14px;
-                border: var(--border-width) solid var(--main-color);
+				text-transform: uppercase;
+				padding: 12px 14px;
+				border: var(--border-width) solid var(--main-color);
 				cursor: grab;
-            }
+				border-radius: var(--big-radius) var(--big-radius) 0 0;
+            		}
+		.window.minified .header {
+			border-radius: var(--big-radius);
+		}
 			.header:active {
 				cursor: grabbing;
 			}
@@ -179,6 +186,7 @@
 			#typeface-list {
 				height: 600px;
 				--collection-size: 0px;
+				border-radius: 0 0 var(--big-radius) var(--big-radius);
 			}
 			.header:not(:active)~#typeface-list .typeface-item:hover {
 				background: var(--main-color);
@@ -271,6 +279,7 @@
 				width: 16px;
 				height: 16px;
 				border: 1px solid #000;
+				border-radius: var(--small-radius);
 			}
 			.typeface-window .close-button::before {
 				content: "";
@@ -303,6 +312,7 @@
 				width: 16px;
 				height: 16px;
 				border: 1px solid rgb(0, 0, 0);
+				border-radius: var(--small-radius);
 			}
 			.minify-button::before, .minify-button::after {
 				content: "";
@@ -330,6 +340,8 @@
 			.typeface-window .toolbar>div {
 				background: #fff;
 				border: 1px solid #000;
+/* 				border-radius: var(--small-radius); */
+				overflow: hidden;
 			}
 			/*------------------------------*/
 			/*TOOLBAR OPTIONS*/
@@ -353,6 +365,7 @@
 				position: relative;
 				float: left;
 				margin-right: 6px;
+				border-radius: var(--small-radius);
 			}
 			.sample-style-option .button {
 				padding: 10px 14px;
@@ -403,6 +416,7 @@
 				float: left;
 				width: 32px;
 				text-align: center;
+				border-radius: var(--small-radius);
 			}
 			
 			/*VARIABLE OPTIONS*/
@@ -411,6 +425,7 @@
 				float: left;
 				position: relative;
 				margin-right: 6px;
+				border-radius: var(--small-radius);
 			}
 			.sample-variable-option .button {
 				padding: 10px 14px;
@@ -467,6 +482,7 @@
 			.sample-format-option>div {
 				border: 1px solid #000;
 				background: #fff;
+				border-radius: var(--small-radius);
 			}
 			.sample-format-option>div:not(:first-child) {
 				margin-top: 6px;
@@ -556,6 +572,7 @@
 				background: #fff;
 				padding: 10px 0;
 				text-align: center;
+				border-radius: var(--small-radius);
 			}
 			.sample-opentype-option>div:not(:first-child) {
 				margin-top: 6px;
@@ -585,6 +602,7 @@
 				background: #fff;
 				padding: 10px 0;
 				text-align: center;
+				border-radius: var(--small-radius);
 			}
 			.sample-paragraph-option>div:not(:first-child) {
 				margin-top: 6px;
@@ -600,7 +618,10 @@
 			}
 			
 			/*SAMPLE*/
-			.sample { height: 400px; }
+			.sample { 
+				height: 400px;
+				border-radius: 0 0 var(--big-radius) var(--big-radius);
+			}
 			.sample-string, .sample-string * {
 				user-select: text;
 			}
@@ -629,6 +650,7 @@
 				width: 32px;
 				height: 32px;
 				padding: 10px 9px;
+				border-radius: var(--small-radius);
 			}
 			.sample-align-option>div {
 				border-top: 1px solid #000;
