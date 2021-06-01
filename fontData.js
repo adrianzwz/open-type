@@ -667,6 +667,42 @@ var FontCollectionData = {
 		foundry:		'',
 		release:		'',
 	},
+
+//====================================================================================================
+	'Lexend': { 
+		name:			'Lexend', 
+		style:			'7 styles', 
+		link:			'Google Fonts', 
+		linkURL:		'https://fonts.google.com/specimen/Lexend',
+		displayStyle:	"font-weight: 500;",
+		sizeAdjust:		1,
+		//----------------------------------------------------------------------------------------------------
+		sampleString:	'What if we could change the way the world reads, starting with a font designed to adjust specifically for your needs?',
+		sampleStyle:	{
+			sizeI:		5,
+			weightI: 	5,
+			italicI:	0,
+			tracking:	0,
+			leading:	1.15,
+			align:		'left',
+			variable:	{},
+			openType:	{
+				'ss01':	1
+			}
+		},
+		//----------------------------------------------------------------------------------------------------
+		fontProps:		{
+			weights:	[2,3,4,5,6,7,8],
+			hasItalic:	false,
+			isVariable:	false,
+			axis:		{}
+		},
+		//----------------------------------------------------------------------------------------------------
+		description:	'',
+		designer:		'Bonnie Shaver-Troup',
+		foundry:		'',
+		release:		'',
+	},
 	
 //====================================================================================================
 	'Crimson Pro': { 
