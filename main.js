@@ -717,5 +717,10 @@ $('#color-button').on('click', function(){
 		colorMode = 0;
 		root.style.setProperty("--main-color", colorDefault[0][0]);
 		root.style.setProperty("--bg-color", colorDefault[0][1]);
+
+		// colorMode = 2;
+		// var randColor = Math.floor( Math.random() * colorPairs.length );
+		// root.style.setProperty("--main-color", colorPairs[randColor][0]);
+		// root.style.setProperty("--bg-color", colorPairs[randColor][1]);
 	}
 });
