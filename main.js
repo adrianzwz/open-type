@@ -698,7 +698,7 @@ var degrees = -45;
 var colorMode = 0;
 //0=light, 1=dark, 2=color
 var colorDefault = [['#000', '#fff'], ['#eee', '#000']];
-var colorPairs = [['#f68', '#53a'], ['#f96', '#777'], ['#fd6', '#d88'], ['#efa', '#6da'], ['#6f9', '#68d'], ['#6ef', '#9a6'], ['#69f', '#fb9'], ['#a6f','#ff9'], ['#f8e', '#fda']];
+var colorPairs = [['#f68', '#53a'], ['#f96', '#777'], ['#fd6', '#d88'], ['#efa', '#6da'], ['#6f9', '#68d'], ['#6ef', '#ffa'], ['#69f', '#fb9'], ['#a6f','#ff9'], ['#f8e', '#fda']];
 var root = $( ":root" ).get(0);
 $('#color-button').on('click', function(){
 	degrees += 360;
