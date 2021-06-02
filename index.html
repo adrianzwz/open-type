@@ -33,6 +33,7 @@
 			}
             :root {
 				--main-color: #000;
+				--bg-color: #fff;
 				--border-width: 1px;
 				--big-radius: 8px;
 				--small-radius: 16px;
@@ -52,11 +53,12 @@
 				width: 100%;
 				height: 100%;
 				overflow: hidden;
+				background: var(--bg-color);
 			}
             .underline { text-decoration: underline; }
 			.divider {
 				width: 100%;
-				border-bottom: 1px solid #000;
+				border-bottom: 1px solid var(--main-color);
 			}
 			.divider:last-child {
 				display: none;
@@ -70,6 +72,20 @@
                 font-variation-settings: "MONO" 1, "CASL" 1, "wght" 500, "slnt" -15, "ital" 0.5;
                 padding: 10px;
             }
+
+			#color-button {
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				border: 1px solid var(--main-color);
+				top: 16px;
+				right: 16px;
+				border-radius: 20px;
+				background: linear-gradient(transparent 50%, var(--main-color) 50%);
+				transform: rotate(-45deg);
+				cursor: pointer;
+				transition: transform 0.5s linear;
+			}
 			
 			
 /*==============================*/
@@ -113,7 +129,7 @@
 				width: 400px;
 				height: auto;
 				box-shadow: 5px 5px var(--main-color);
-				background: #fff;
+				background: var(--bg-color);
 			}
 			/*------------------------------*/
 			/*TOOLBAR*/
@@ -127,7 +143,7 @@
 				top: 12px;
 				width: 16px;
 				height: 16px;
-				border: 1px solid rgb(0, 0, 0);
+				border: 1px solid var(--main-color);
 				border-radius: var(--small-radius);
 			}
 			#input-box {
@@ -143,8 +159,9 @@
 				outline: none;
 			}
 			#input-box::selection {
-				background-color: rgba(0,0,0,0.99);
-				color: #fff;
+				/*background-color: rgba(0,0,0,0.99);*/
+				background-color: var(--main-color);
+				color: var(--bg-color);
 			}
 			#input-box.blank {
 				opacity: 1;
@@ -153,7 +170,7 @@
 			#collection-size-option {
 				width: 100px;
 				padding: 0;
-				border-left: 1px solid #000;
+				border-left: 1px solid var(--main-color);
 			}
 			#collection-size-option .button {
 				width: 30px;
@@ -162,8 +179,8 @@
 				text-align: center;
 			}
 			#collection-size-option .button:active {
-				background: #000;
-				color: #fff;
+				background: var(--main-color);
+				color: var(--bg-color);
 			}
 			#collection-size-option .minus-button {
 				float: left;
@@ -196,7 +213,7 @@
 				cursor: pointer;
 			}
 			.header:not(:active)~#typeface-list .typeface-item:hover * {
-				color: #fff;
+				color: var(--bg-color);
 				cursor: pointer;
 			}
 			.typeface-item:hover .typeface-item-typeface span {
@@ -272,7 +289,7 @@
 				width: 600px;
 				height: auto;
 				box-shadow: 5px 5px var(--main-color);
-				background: #fff;
+				background: var(--bg-color);
 			}
 			.typeface-window .close-button {
 				position: absolute;
@@ -280,13 +297,13 @@
 				top: 12px;
 				width: 16px;
 				height: 16px;
-				border: 1px solid #000;
+				border: 1px solid var(--main-color);
 				border-radius: var(--small-radius);
 			}
 			.typeface-window .close-button::before {
 				content: "";
 				display: block;
-				background: #000;
+				background: var(--main-color);
 				width: 8px;
 				height: 1px;
 				margin: 0 auto;
@@ -298,7 +315,7 @@
 			.typeface-window .close-button::after {
 				content: "";
 				display: block;
-				background: #000;
+				background: var(--main-color);
 				width: 8px;
 				height: 1px;
 				margin: 0 auto;
@@ -313,13 +330,13 @@
 				top: 12px;
 				width: 16px;
 				height: 16px;
-				border: 1px solid rgb(0, 0, 0);
+				border: 1px solid var(--main-color);
 				border-radius: var(--small-radius);
 			}
 			.minify-button::before, .minify-button::after {
 				content: "";
 				display: block;
-				background: #000;
+				background: var(--main-color);
 				width: 6px;
 				height: 1px;
 				margin: 0 auto;
@@ -340,22 +357,22 @@
 				height: 0;
 			}
 			.typeface-window .toolbar>div {
-				background: #fff;
-				border: 1px solid #000;
+				background: var(--bg-color);
+				border: 1px solid var(--main-color);
 /* 				border-radius: var(--small-radius); */
 				overflow: hidden;
 			}
 			/*------------------------------*/
 			/*TOOLBAR OPTIONS*/
 			.typeface-window .toolbar .button.is-active {
-				background: #000;
-				color: #fff;
+				background: var(--main-color);
+				color: var(--bg-color);
 			}
 			.button svg {
-				fill: #000;
+				fill: var(--main-color);
 			}
 			.button.is-active svg {
-				fill: #fff;
+				fill: var(--bg-color);
 			}
 			/*------------------------------*/
 			/*STYLE OPTIONS*/
@@ -386,8 +403,8 @@
 			.sample-style-option .options {
 				display: none;
 				/*position: absolute;*/
-				background: #fff;
-/* 				border: 1px solid #000;
+				background: var(--bg-color);
+/* 				border: 1px solid var(--main-color);
 				top: 100%;
 				left: -1px;
 				right: -1px; */
@@ -396,8 +413,8 @@
 				display: block;
 			}
 			.sample-style-option.is-active .button {
-				background: #000;
-				color: #fff;
+				background: var(--main-color);
+				color: var(--bg-color);
 			}
 			.sample-style-option.is-active .button .arrow {
 				transform: rotate(90deg);
@@ -406,9 +423,9 @@
 				padding: 10px 14px;
 			}
 			.sample-style-option .options .option:hover {
-				background: #000;
-				color: #fff;
-				outline: 1px solid #000;
+				background: var(--main-color);
+				color: var(--bg-color);
+				outline: 1px solid var(--main-color);
 			}
 			
 			/*ITALIC BUTTON*/
@@ -447,8 +464,8 @@
 				display: none;
 			}
 			.sample-variable-option.is-active .button {
-				background: #000;
-				color: #fff;
+				background: var(--main-color);
+				color: var(--bg-color);
 			}
 			.sample-variable-option.is-active .button~* {
 				display: block;
@@ -482,8 +499,8 @@
 				background: none;
 			}
 			.sample-format-option>div {
-				border: 1px solid #000;
-				background: #fff;
+				border: 1px solid var(--main-color);
+				background: var(--bg-color);
 				border-radius: var(--small-radius);
 				overflow: hidden;
 			}
@@ -499,7 +516,7 @@
 			.sample-format-option .vertical-divider {
 				float: left;
 				height: 30px;
-				border-left: 1px solid #000;
+				border-left: 1px solid var(--main-color);
 			}
 			.sample-format-option>div:not(:first-child) {
 				display: none;
@@ -539,8 +556,8 @@
 				text-align: center;
 			}
 			.sample-format-option .button:active {
-				background: #000;
-				color: #fff;
+				background: var(--main-color);
+				color: var(--bg-color);
 			}
 			.sample-format-option .minus-button {
 				float: left;
@@ -571,8 +588,8 @@
 				background: none;
 			}
 			.sample-opentype-option>div {
-				border: 1px solid #000;
-				background: #fff;
+				border: 1px solid var(--main-color);
+				background: var(--bg-color);
 				padding: 10px 0;
 				text-align: center;
 				border-radius: var(--small-radius);
@@ -601,8 +618,8 @@
 				background: none;
 			}
 			.sample-paragraph-option>div {
-				border: 1px solid #000;
-				background: #fff;
+				border: 1px solid var(--main-color);
+				background: var(--bg-color);
 				padding: 10px 0;
 				text-align: center;
 				border-radius: var(--small-radius);
@@ -643,7 +660,7 @@
 			}
 			.sample-string::selection, .sample-string *::selection {
 				background-color: rgba(0,0,0,0.99);
-				color: #fff;
+				color: var(--bg-color);
 			}
 			
 			/*ALIGN OPTIONS*/
@@ -656,7 +673,7 @@
 				border-radius: var(--small-radius);
 			}
 			.sample-align-option>div {
-				border-top: 1px solid #000;
+				border-top: 1px solid var(--main-color);
 				margin-bottom: 2px;
 			}
 			.sample-align-option .bar-1 { width: 10px; }
@@ -674,38 +691,38 @@
 				right: 31px;
 				font-size: 10px;
 				line-height: 1;
-				background: #fff;
-				border: 1px solid #000;
+				background: var(--bg-color);
+				border: 1px solid var(--main-color);
 				border-radius: var(--small-radius);
 			}
 			.sample-link>a {
-				color: #000;
+				color: var(--main-color);
 				text-decoration: none;
 				padding: 10px 14px;
 				display: block;
 				cursor: alias;
 			}
-			.sample-link:hover { background: #000; }
-			.sample-link:hover>a { color: #fff; text-decoration: underline; }
+			.sample-link:hover { background: var(--main-color); }
+			.sample-link:hover>a { color: var(--bg-color); text-decoration: underline; }
 			
 /*==============================*/
 /*Scrollbar Customization*/
 /*==============================*/
 			.sb-container {
-				background: #fff;
-				border-left: 1px solid #000;
+				background: var(--bg-color);
+				border-left: 1px solid var(--main-color);
 			}
 			.sb-button {
-				background: #fff;
+				background: var(--bg-color);
 			}
 			.sb-button.is-active {
-				background: #000;
+				background: var(--main-color);
 			}
 			.sb-button.is-active::before {
-				color: #fff;
+				color: var(--bg-color);
 			}
 			.sb-up {
-				border-bottom: 1px solid #000;
+				border-bottom: 1px solid var(--main-color);
 			}
 			.sb-up::before {
 				content: '>';
@@ -713,7 +730,7 @@
 				position: absolute;
 				overflow: visible;
 				white-space: nowrap;
-				color: #000;
+				color: var(--main-color);
 				font-size: 10px;
 				font-weight: 400;
 				left: 50%;
@@ -722,7 +739,7 @@
 				line-height: 1;
 			}
 			.sb-down {
-				border-top: 1px solid #000;
+				border-top: 1px solid var(--main-color);
 			}
 			.sb-down::before {
 				content: '>';
@@ -730,7 +747,7 @@
 				position: absolute;
 				overflow: visible;
 				white-space: nowrap;
-				color: #000;
+				color: var(--main-color);
 				font-size: 10px;
 				font-weight: 400;
 				left: 50%;
@@ -739,13 +756,13 @@
 				line-height: 1;
 			}
 			.sb-track {
-				background-image: linear-gradient(45deg, black 25%, transparent 25%), linear-gradient(45deg, transparent 75%, black 75%, black);
+				background-image: linear-gradient(45deg, var(--main-color) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--main-color) 75%, var(--main-color));
 				background-size: 2px 2px;
 				background-position: 1px 1px, 2px 2px;
 			}
 			.sb-scrollbar {
-				background: #fff;
-				outline: 1px solid #000;
+				background: var(--bg-color);
+				outline: 1px solid var(--main-color);
 			}
 
 			
@@ -753,8 +770,8 @@
 /*Others*/
 /*==============================*/
 			.checker {
-				background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
-				linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+				background-image: linear-gradient(45deg, var(--main-color) 25%, transparent 25%, transparent 75%, var(--main-color) 75%, var(--main-color)),
+				linear-gradient(45deg, var(--main-color) 25%, transparent 25%, transparent 75%, var(--main-color) 75%, var(--main-color));
 				background-size: 4px 4px;
 				background-position: 0 0, 2px 2px;
 			}
@@ -773,7 +790,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<div id="container">
 			<div id="description"><span class="underline">OPEN:TYPE</span> is a curated collection of free &amp; open-source typefaces.</div>
-			
+			<div id="color-button"></div>
 			<div id="collection" class="window">
 				<div class="header">Collection</div>
 				<div class="minify-button button"></div>
