@@ -629,6 +629,8 @@ $('#collection').on('click', '.typeface-item', function(e){
 					$('<div class="sample window-section">').append(
 						$('<div class="sample-string" contenteditable="true" spellcheck="false">')
 					)
+				).append(
+					$('<div class="sample-link">').append('<a href="'+FontCollectionData[family].linkURL+'" target="_blank" >-> '+FontCollectionData[family].link+'</a>')
 				)
 			);
 			$thisWindow = $('.window[data-font="'+family+'"]')
