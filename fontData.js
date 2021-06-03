@@ -36,7 +36,7 @@ var FontCollectionData = {
 		align:		'left',
 		variable:	{
 			'wght':		300,
-			'opsz':		144,
+			'opsz':		143,
 			'SOFT':		50,
 			'WONK':		1
 		},
@@ -59,7 +59,7 @@ var FontCollectionData = {
 			},
 			'opsz':		{
 				axisName:	'Optical Size',
-				axisMax:	144,
+				axisMax:	143,
 				axisMin:	9,
 				axisStep:	1
 			},
