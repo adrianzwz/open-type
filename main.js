@@ -698,7 +698,7 @@ var degrees = -45;
 var colorMode = 0;
 //0=light, 1=dark, 2=color
 var colorDefault = [['#000', '#fff'], ['#ddd', '#000']];
-var colorPairs = [['#f68', '#53a'], ['#f96', '#777'], ['#fd6', '#d88'], ['#efa', '#6da'], ['#6f9', '#68d'], ['#6ef', '#ffa'], ['#69f', '#fb9'], ['#a6f','#ff9'], ['#f8e', '#fda']];
+var colorPairs = [['#f68', '#53a'], ['#f96', '#777'], ['#fd6', '#d88'], ['#efa', '#6da'], ['#6f9', '#68d'], ['#2cf', '#ffa'], ['#69f', '#fb9'], ['#a6f','#ff9'], ['#f8e', '#fda'], ['#ddd', '#36e'], ['#f99', '#587'], ['#0ba', '#df9'], ['#c89', '#fec']];
 var root = $( ":root" ).get(0);
 $('#color-button').on('click', function(){
 	degrees += 360;
@@ -723,4 +723,18 @@ $('#color-button').on('click', function(){
 		// root.style.setProperty("--main-color", colorPairs[randColor][0]);
 		// root.style.setProperty("--bg-color", colorPairs[randColor][1]);
 	}
+});
+// for (i = 0; i < colorPairs.length; i++) {
+// 	$('#container').append('<div class="color-test">');
+// 	$('#container>div').last().css({
+// 		"top": 40+(i*24)+"px",
+// 		"border-color": colorPairs[i][0],
+// 		"background": 'linear-gradient('+colorPairs[i][1]+' 50%, '+colorPairs[i][0]+' 50%)'
+// 	  });
+// }
+
+//====================================================================================================
+//WEBSITE INFO
+$('#site-info-button').on('click', function(){
+	$(this).toggleClass('is-active');
 });

@@ -80,11 +80,59 @@
 				border: 1px solid var(--main-color);
 				top: 16px;
 				right: 16px;
-				border-radius: 20px;
+				border-radius: var(--small-radius);
 				background: linear-gradient(transparent 50%, var(--main-color) 50%);
 				transform: rotate(-45deg);
 				cursor: pointer;
 				transition: transform 0.5s linear;
+			}
+
+			.color-test {
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				border: 1px solid var(--main-color);
+				top: 16px;
+				right: 16px;
+				border-radius: 20px;
+				background: linear-gradient(transparent 50%, var(--main-color) 50%);
+				transform: rotate(-45deg);
+			}
+
+			#site-info-button {
+				position: absolute;
+				width: 32px;
+				padding: 10px 0;
+				font-size: 10px;
+				line-height: 1;
+				border: 1px solid var(--main-color);
+				text-align: center;
+				border-radius: 16px;
+				left: 16px;
+				bottom: 16px;
+				cursor: pointer;
+				z-index: 2001;
+				background: var(--bg-color);
+			}
+			#site-info-button.is-active {
+				background: var(--main-color);
+				color: var(--bg-color);
+			}
+			#site-info {
+				display: none;
+				position: absolute;
+				font-size: 10px;
+				padding: 10px 14px;
+				line-height: 1;
+				border: 1px solid var(--main-color);
+				border-radius: var(--small-radius);
+				background: var(--bg-color);
+				left: 54px;
+				bottom: 16px;
+				z-index: 2000;
+			}
+			#site-info-button.is-active+#site-info {
+				display: block;
 			}
 			
 			
@@ -805,6 +853,16 @@
 		<div id="container">
 			<div id="description"><span class="underline">OPEN:TYPE</span> is a curated collection of free &amp; open-source typefaces.</div>
 			<div id="color-button"></div>
+			<div id="site-info-button">i</div>
+			<div id="site-info">This website is coded with 
+				<svg x="0px" y="0px" viewBox="0 0 300 300" width="300px" height="300px" style="width: 11px; height: 9px; transform: scale(1.2) translateY(0.5px);">
+					<style type="text/css">
+						.st0{fill:none;stroke:var(--main-color);stroke-width:30;stroke-miterlimit:10;}
+					</style>
+		   			<path class="st0" d="M149,269C85,241,25,187,25,109c0-39,24-68,62-68c27,0,51,15,62,50h2c11-35,35-50,62-50c38,0,62,29,62,68
+			   	c0,78-60,132-124,160H149z"/>
+		   		</svg>
+		    by Adrian Zhang. Find me on <a href="https://instagram.com/a___a_zhang/" target="_blank" style="color: var(--main-color)">Instagram</a></div>
 			<div id="collection" class="window">
 				<div class="header">Collection</div>
 				<div class="minify-button button"></div>
