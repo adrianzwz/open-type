@@ -68,3 +68,15 @@
   font-style: italic;
   src: url("fonts/CrimsonPro-Italic-VariableFont_wght.ttf") format("opentype");
 }
+
+/*FRAUNCES*/
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  src: url("fonts/Fraunces[SOFT,WONK,opsz,wght].ttf") format("opentype");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  src: url("fonts/Fraunces-Italic[SOFT,WONK,opsz,wght].ttf") format("opentype");
+}

@@ -18,19 +18,71 @@ var OpenTypeFeatureNames = {
 var FontCollectionData = {
 
 //====================================================================================================
-	/*'HKGrotesk': { 
-		name:			'HK Grotesk', 
-		style:			'10 styles', 
-		link:			'Hanken Design', 
-		linkURL:		'https://hanken.co/products/hk-grotesk',
-		displayStyle:	'font-weight: 700;',
-		sampleString:	'',
-		sampleSizeI:	5,
-		description:	'',
-		designer:		'',
-		foundry:		'',
-		release:		'',
-	},*/
+'Fraunces': { 
+	name:			'Fraunces', 
+	style:			'108 styles (variable)', 
+	link:			'Google Fonts', 
+	linkURL:		'https://fonts.google.com/specimen/Fraunces',
+	displayStyle:	"font-variation-settings: 'wght' 600, 'opsz' 36, 'SOFT' 100, 'WONK' 1;",
+	sizeAdjust:		1,
+	//----------------------------------------------------------------------------------------------------
+	sampleString:	'Art Nouveau is a French style that featured sinewy line work and was heavily informed by forms and patterns appearing in nature.',
+	sampleStyle:	{
+		sizeI:		7,
+		weightI: 	7,
+		italicI:	1,
+		tracking:	0, // in 1/1000 em
+		leading:	1.05,
+		align:		'left',
+		variable:	{
+			'wght':		300,
+			'opsz':		144,
+			'SOFT':		50,
+			'WONK':		1
+		},
+		openType:	{
+			'liga':	1,
+			'ss01': 0
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	fontProps:		{
+		weights:	[],
+		hasItalic:	true,
+		isVariable:	true,
+		axis:		{
+			'wght':		{
+				axisName:	'Weight',
+				axisMax:	900,
+				axisMin:	100,
+				axisStep:	10
+			},
+			'opsz':		{
+				axisName:	'Optical Size',
+				axisMax:	144,
+				axisMin:	9,
+				axisStep:	1
+			},
+			'SOFT':		{
+				axisName:	'Soften',
+				axisMax:	100,
+				axisMin:	0,
+				axisStep:	1
+			},
+			'WONK':		{
+				axisName:	'Wonk',
+				axisMax:	1,
+				axisMin:	0,
+				axisStep:	1
+			},
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	description:	'',
+	designer:		'',
+	foundry:		'Undercase Type',
+	release:		'',
+},
 
 //====================================================================================================
 	'HeptaSlab': { 
