@@ -49,6 +49,7 @@
 				overflow: hidden;
 				cursor: default;
             }
+			
 			#container {
 				width: 100%;
 				height: 100%;
@@ -64,12 +65,29 @@
 				display: none;
 			}
 			
-			
+			#size-alert {
+				display: none;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: var(--bg-color);
+				color: var(--main-color);
+				z-index: 9999;
+				font-family: recursive;
+                font-size: 16px;
+                font-variation-settings: "MONO" 1, "CASL" 1, "wght" 700, "slnt" -15, "ital" 0.5;
+                padding: 10px;
+			}
+			@media only screen and (max-width: 600px), (max-height: 600px) {
+				#size-alert { display: block; }
+			}
+
 			
             #description {
                 font-family: recursive;
                 font-size: 16px;
-                font-variation-settings: "MONO" 1, "CASL" 1, "wght" 500, "slnt" -15, "ital" 0.5;
+                font-variation-settings: "MONO" 1, "CASL" 1, "wght" 700, "slnt" -15, "ital" 0.5;
                 padding: 10px;
             }
 
@@ -850,6 +868,11 @@
 	
     <body>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<div id="size-alert">
+			<div>
+				please view this page on a larger screen :(<br>support for smaller screens are (maybe) coming soon!
+			</div>
+		</div>
 		<div id="container">
 			<div id="description"><span class="underline">OPEN:TYPE</span> is a curated collection of free &amp; open-source typefaces.</div>
 			<div id="color-button"></div>
