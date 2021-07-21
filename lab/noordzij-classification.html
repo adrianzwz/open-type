@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+
+            @font-face {
+            font-family: "Mono";
+            src: url("NectoMono-Regular.otf") format("opentype");
+            }
+            :root {
+                --main: #000;
+                --bg: #fff;
+            }
+            body {
+                font-family: Mono;
+                font-size: 12px;
+                margin: 0;
+                height: 100%;
+                background: var(--bg);
+                cursor: crosshair;
+                overflow: hidden;
+            }
+
+            #values {
+                margin: 0;
+                position: absolute;
+                padding:  0 5px;
+                left: 16.667%;
+                top: 5px;
+            }
+
+            .grid {
+                outline: 1px #000 solid;
+                position: absolute;
+                opacity: 10%;
+            }
+            #gridX {
+                left: 0;
+                height: 0;
+                width: 100vw;
+                top: 50%;
+                outline-width: 0.5px;
+            }
+            #gridX1 {
+                left: 0;
+                height: 50vh;
+                width: 100vw;
+                top: 25%;
+            }
+            #gridY {
+                left: 50%;
+                height: 100vh;
+                width: 0;
+                top: 0;
+                outline-width: 0.5px;
+            }
+            #gridY1 {
+                left: 33.33%;
+                height: 100vh;
+                width: 33.33vw;
+                top: 0;
+            }
+            #gridY2 {
+                left: 16.667%;
+                height: 100vh;
+                width: 66.667vw;
+                top: 0;
+            }
+
+            #valueX {
+                position: absolute;
+                bottom: 25px;
+                width: 100%;
+            }
+            #valueX p, #valueY p {
+                float: left;
+                position: absolute;
+                padding: 5px 5px;
+                margin: 0;
+            }
+            #valueX p:nth-child(1) {left:0%;}
+            #valueX p:nth-child(2) {left:16.667%; transform: translateX(-50%);}
+            #valueX p:nth-child(3) {left:33.33%; transform: translateX(-50%);}
+            #valueX p:nth-child(4) {left:50%; transform: translateX(-50%);}
+            #valueX p:nth-child(5) {left:66.667%; transform: translateX(-50%);}
+            #valueX p:nth-child(6) {left:83.33%; transform: translateX(-50%);}
+            #valueX p:nth-child(7) {right:0%;}
+            #valueY p:nth-child(1) {top:0%;}
+            #valueY p:nth-child(2) {top:25%; transform: translateY(-50%);}
+            #valueY p:nth-child(3) {top:50%; transform: translateY(-50%);}
+            #valueY p:nth-child(4) {top:75%; transform: translateY(-50%);}
+            #valueY p:nth-child(5) {bottom:15px;}
+
+            .block { position: absolute; box-sizing: border-box; padding: 5px 8px; }
+
+            #didone {
+                left: 50%;
+                top: 0;
+                width: 40px;
+                height: 40px;
+                background: hsla(310, 100%, 50%, 0.2);
+                color:      hsla(310, 100%, 30%, 1);
+            }
+            #transitional {
+                left: 50%;
+                top: 0;
+                width: 16.667%;
+                height: 25%;
+                background: hsla(0, 100%, 50%, 0.2);
+                color:      hsla(0, 100%, 30%, 1);
+            }
+            #humanistSerif {
+                left: 66.667%;
+                top: 0;
+                width: 33.33%;
+                height: 25%;
+                background: hsla(40, 100%, 50%, 0.2);
+                color:      hsla(40, 100%, 30%, 1);
+            }
+            #grotesque {
+                left: 50%;
+                top: 25%;
+                width: 16.667%;
+                height: 25%;
+                background: hsla(90, 100%, 50%, 0.2);
+                color:      hsla(90, 100%, 30%, 1);
+            }
+            #neoGrotesque {
+                left: 50%;
+                top: 37.5%;
+                width: 11.11%;
+                height: 12.5%;
+                background: hsla(150, 100%, 50%, 0.2);
+                color:      hsla(150, 100%, 30%, 1);
+            }
+            #geometric {
+                left: 50%;
+                bottom: 50%;
+                width: 50%;
+                height: 5%;
+                background: hsla(190, 100%, 50%, 0.2);
+                color:      hsla(190, 100%, 30%, 1);
+            }
+            #humanist {
+                left: 66.667%;
+                top: 25%;
+                width: 33.33%;
+                height: 25%;
+                background: hsla(210, 100%, 50%, 0.2);
+                color:      hsla(210, 100%, 30%, 1);
+            }
+            #reverse {
+                left: 50%;
+                bottom: 0;
+                width: 40px;
+                height: 37.5%;
+                background: hsla(280, 100%, 50%, 0.2);
+                color:      hsla(280, 100%, 30%, 1);
+            }
+
+
+            .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+        </style>
+    </head>
+    <body>
+        <div id="gridX" class="grid"></div>
+        <div id="gridX1" class="grid"></div>
+        <div id="gridY" class="grid"></div>
+        <div id="gridY1" class="grid"></div>
+        <div id="gridY2" class="grid"></div>
+        <div id="valueX" class="clearfix">
+            <p>stress = -30</p>
+            <p>stress = -20</p>
+            <p>stress = -10</p>
+            <p>stress = 0</p>
+            <p>stress = 10</p>
+            <p>stress = 20</p>
+            <p>stress = 30</p>
+        </div>
+        <div id="valueY" class="clearfix">
+            <p>contrast = 100</p>
+            <p>contrast = 50</p>
+            <p>contrast = 0</p>
+            <p>contrast = -50</p>
+            <p>contrast = -100</p>
+        </div>
+        <div id="didone" class="block">Didone</div>
+        <div id="transitional" class="block"><br><br>Classicals&nbsp;/&nbsp;Transitional</div>
+        <div id="humanistSerif" class="block">Classicals&nbsp;/&nbsp;Humanist</div>
+        <div id="grotesque" class="block">Lineal&nbsp;/&nbsp;Grotesque</div>
+        <div id="neoGrotesque" class="block">Lineal&nbsp;/&nbsp;Neo-Grotesque</div>
+        <div id="geometric" class="block">Lineal&nbsp;/&nbsp;Geometric</div>
+        <div id="humanist" class="block">Lineal&nbsp;/&nbsp;Humanist</div>
+        <div id="reverse" class="block">Reverse&nbsp;Contrast</div>
+    </body>
+</html>
