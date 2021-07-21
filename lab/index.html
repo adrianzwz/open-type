@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../jquery-3.4.1.min.js"></script>
+        <script src="noordzij.js"></script>
+        <style>
+
+            @font-face {
+            font-family: "Mono";
+            src: url("NectoMono-Regular.otf") format("opentype");
+            }
+            :root {
+                --main: #000;
+                --bg: #fff;
+            }
+            body {
+                font-family: Mono;
+                font-size: 12px;
+                margin: 0;
+                height: 100%;
+                background: var(--bg);
+                cursor: crosshair;
+                overflow: hidden;
+            }
+            a,a:link,a:visited{color:inherit;text-decoration: underline;}
+            a:hover{color:inherit;background-color:transparent;text-decoration: none;}
+            #main {
+                /* position: relative;
+                top: 50%;
+                transform: translateY(-50%) translateY(-90px); */
+                color: var(--main);
+                font-size: 16px;
+                text-align: center;
+                margin: 0;
+                line-height: 1;
+                margin: 100px 0 0 0;
+            }
+            #main p {
+                
+            }
+
+            .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <p id="main">
+                a_a's lab
+                <br>
+                <br>
+                <a href="noordzij.html">Noordzij's Cube Extrapolation</a>
+            </p>
+            
+        </div>
+    </body>
+</html>
