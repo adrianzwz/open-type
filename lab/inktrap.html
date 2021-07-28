@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../jquery-3.4.1.min.js"></script>
+        <script src="../rangeslider.js"></script>
+        <link rel="stylesheet" href="../rangesliderCustom.css"/>
+
+        <script src="inktrap.js"></script>
+        <style>
+
+            @font-face {
+            font-family: "inktrap";
+            src: url("Inktrap2GX.ttf") format("opentype");
+            }
+            @font-face {
+            font-family: "Mono";
+            src: url("NectoMono-Regular.otf") format("opentype");
+            }
+            :root {
+                --main: #000;
+                --bg: #fff;
+            }
+            body {
+                font-family: Mono;
+                font-size: 12px;
+                margin: 0;
+                height: 100%;
+                background: var(--bg);
+                cursor: crosshair;
+                overflow: hidden;
+            }
+            #demo-container {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%) translateY(-90px);
+            }
+            #demo {
+                font-family: inktrap;
+                font-variation-settings: 'wght' 0;
+                font-size: 240px;
+                color: var(--main);
+                text-align: center;
+                margin: 0;
+                line-height: 1;
+            }
+            #demo:focus {
+                border: none;
+                outline: none;
+            }
+            #demo::selection {
+				background-color: var(--main);
+				color: var(--bg);
+			}
+
+            #filter1 {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                background: #808080;
+                mix-blend-mode: color-dodge;
+            }
+            #filter2 {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                background: #000;
+                mix-blend-mode: color-burn;
+            }
+
+            #options {
+                /* z-index: 1000; */
+                width: 200px;
+                position: absolute;
+                left: 50%;
+                bottom: 50px;
+                transform: translateX(-50%);
+            }
+            .label { float: left; }
+            .value { float: right; }
+
+            .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+        </style>
+    </head>
+    <body>
+        <div id="demo-container">
+            <p id="demo" contenteditable="false" spellcheck="false">
+                01234567
+            </p>
+        </div>
+        <div id="filter1"></div>
+        <div id="filter2"></div>
+        <div id="options">
+            <div id="weight" class="op-unit">
+                <div class="text clearfix">
+                    <p class="label">Inktrap</p>
+                    <p class="value">0</p>
+                </div>
+                <input type="range" min="0" max="100" step="1" value="0">
+            </div>
+            <div id="size" class="op-unit">
+                <div class="text clearfix">
+                    <p class="label">Size</p>
+                    <p class="value">200</p>
+                </div>
+                <input type="range" min="24" max="320" step="1" value="240">
+            </div>
+            <div id="blur" class="op-unit">
+                <div class="text clearfix">
+                    <p class="label">Blur</p>
+                    <p class="value">0</p>
+                </div>
+                <input type="range" min="0" max="10" step="0.1" value="0">
+            </div>
+        </div>
+    </body>
+</html>
