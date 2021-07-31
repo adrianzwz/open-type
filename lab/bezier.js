@@ -1,4 +1,4 @@
-var gridX = 40, gridY = 40;
+var gridX = 60, gridY = 60;
 var cursorX, cursorY;
 var lines = [[]], lineI = 0;
 var points = []; // deprecated
