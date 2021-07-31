@@ -24,15 +24,106 @@
                 height: 100%;
                 background: var(--bg);
                 cursor: crosshair;
-                overflow: hidden;
+                /* overflow: hidden; */
+            }
+            p { margin: 0; }
+
+            #info { padding: 10px; }
+
+            #options { margin-top: 10px; }
+
+            .op-unit { width: 200px; margin-right: 10px; }
+            .op-unit .text { margin-bottom: 10px; }
+            .b-unit { width: 100px; margin-left: 0px; }
+            .b-unit .text { margin-bottom: 5px; }
+
+            .boolean {
+                background: #fff;
+                width: 15px;
+                border: #000 1px solid;
+                box-sizing: border-box;
+                height: 15px;
+                cursor: pointer;
+                margin-right: 5px;
+            }
+            .boolean.is-active {
+                background: #000;
             }
 
+
+            .left { float: left; }
+            .right { float: right; }
             .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
         </style>
     </head>
     <body>
         <main>
-            
+
         </main>
+        <div id="info">
+            <p>
+                A drawing tool based on bézier curves and grid.
+                <br>
+                [Click] to add new points.
+                [Enter] to start a new curve.
+                [Backspace] to undo.
+                [Space] to clear canvas.
+            </p>
+            <div id="options" class="clearfix">
+                <div class="op-unit b-unit left">
+                    <div id="s0" class="text clearfix">
+                        <p class="left is-active boolean"></p>
+                        <p class="left">stroke</p>
+                    </div>
+                    <div id="g" class="text clearfix">
+                        <p class="left is-active boolean"></p>
+                        <p class="left">grid</p>
+                    </div>
+                </div>
+                <div class="op-unit b-unit left">
+                    <div id="sa" class="text clearfix">
+                        <p class="left is-active boolean"></p>
+                        <p class="left">stroke A</p>
+                    </div>
+                    <div id="fa" class="text clearfix">
+                        <p class="left is-active boolean"></p>
+                        <p class="left">fill A</p>
+                    </div>
+                </div>
+                <div class="op-unit b-unit left">
+                    <div id="sb" class="text clearfix">
+                        <p class="left boolean"></p>
+                        <p class="left">stroke B</p>
+                    </div>
+                    <div id="fb" class="text clearfix">
+                        <p class="left boolean"></p>
+                        <p class="left">fill B</p>
+                    </div>
+                </div>
+                <div id="s" class="op-unit left">
+                    <div class="text clearfix">
+                        <p class="left">Stroke</p>
+                        <p class="right value"></p>
+                    </div>
+                    <input type="range" min="0.25" max="10" step="0.25" value="0.25">
+                </div>
+                <div id="a1" class="op-unit left">
+                    <div class="text clearfix">
+                        <p class="left">a1</p>
+                        <p class="right value"></p>
+                    </div>
+                    <input type="range" min="0" max="2" step="0.05" value="1">
+                </div>
+                <div id="a2" class="op-unit left">
+                    <div class="text clearfix">
+                        <p class="left">a2</p>
+                        <p class="right value"></p>
+                    </div>
+                    <input type="range" min="-1" max="1" step="0.05" value="0">
+                </div>
+                
+            </div>
+        </div>
+
     </body>
 </html>
