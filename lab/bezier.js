@@ -30,7 +30,7 @@ function setup() {
 function draw() {
 
     meter.normalRange = true;
-    meter.smoothing = 0.98;
+    meter.smoothing = 0.95;
     vol = meter.getValue();
     //console.log(vol);
     if(mA1) {
