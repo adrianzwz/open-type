@@ -8,6 +8,7 @@ var s = 0.25;
 var s0 = true, g = true;
 var sa = true, fa = true;
 var sb = false, fb = false;
+var mic;
 
 //lines.push([]);
 
@@ -17,6 +18,9 @@ function setup() {
     frameRate(30);
     cursorX = round(mouseX/gridX)*gridX;
     cursorY = round(mouseY/gridY)*gridY;
+
+    mic = new p5.AudioIn();
+    mic.start();
 }
 
 function draw() {
@@ -24,6 +28,7 @@ function draw() {
 
     noFill();
     noStroke();
+    
 
     if(g) stroke(230);
     for(i = gridX; i < width; i += gridX) {
@@ -36,6 +41,9 @@ function draw() {
     stroke(0);
     noStroke();
     
+    var vol = mic.getLevel();
+    a1 = vol;
+    //console.log(vol);
 
     //drawing multiple lines
     for(i = 0; i < lines.length; i++) {
@@ -47,6 +55,8 @@ function draw() {
             pop();
 
             noFill();
+
+            
 
             if(j < lines[i].length - 1) {
                 push();
