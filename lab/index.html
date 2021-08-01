@@ -2,19 +2,27 @@
     <head>
         <meta charset="utf-8">
         <script src="../jquery-3.4.1.min.js"></script>
-        <script src="noordzij.js"></script>
+        <script src="lab.js"></script>
         <style>
 
             @font-face {
-            font-family: "Mono";
-            src: url("NectoMono-Regular.otf") format("opentype");
+                font-family: "Mono";
+                src: url("NectoMono-Regular.otf") format("opentype");
             }
+            @font-face {
+                font-family: "Newsreader";
+                font-style: normal;
+                src: url("Newsreader-VariableFont_opsz,wght.ttf") format("opentype");
+            }
+
+
             :root {
                 --main: #000;
                 --bg: #fff;
             }
             body {
-                font-family: Mono;
+                font-family: Newsreader;
+                font-variation-settings: 'wght' 320, 'opsz' 18;
                 font-size: 12px;
                 margin: 0;
                 height: 100%;
@@ -22,6 +30,7 @@
                 cursor: crosshair;
                 overflow: hidden;
             }
+            p{margin:0;}
             a,a:link,a:visited{color:inherit;text-decoration: underline;}
             a:hover{color:inherit;background-color:transparent;text-decoration: none;}
             #main {
@@ -29,14 +38,37 @@
                 top: 50%;
                 transform: translateY(-50%) translateY(-90px); */
                 color: var(--main);
-                font-size: 16px;
-                text-align: center;
+                font-size: 32px;
+                /* text-align: center; */
                 margin: 0;
                 line-height: 1.2;
-                margin: 100px 0 0 0;
+                padding: 10px;
             }
-            #main p {
-                
+            #main span {
+                float: right;
+            }
+
+
+
+            #mouseY, #mouseX {
+                border: 1px #000 solid;
+                position: absolute;
+                /* opacity: 10%; */
+                z-index: -1;
+            }
+            #mouseY {
+                left: 0;
+                height: 0;
+                width: 100vw;
+                top: 0;
+                border-width: 0.5px;
+            }
+            #mouseX {
+                left: 0;
+                height: 100vh;
+                width: 0;
+                top: 0;
+                border-width: 0.5px;
             }
 
             .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
@@ -44,19 +76,30 @@
     </head>
     <body>
         <div id="container">
-            <p id="main">
-                a_a's lab
+            <div id="main">
+                <p>a_a’s lab</p>
                 <br>
                 <br>
-                <a href="noordzij.html">Noordzij's Cube Extrapolation</a>
-                <br>
-                <a href="noordzij-classification.html">Typeface Classification under Noordzij's Cube Model</a>
-                <br>
-                <a href="inktrap.html">Study on Ink Traps</a>
-                <br>
-                <a href="bezier.html">A Sound Reactive Drawing Tool Based on Bézier Curves and Grid</a>
-            </p>
+                
+                <div class="clearfix">
+                    <a href="noordzij.html">Noordzij’s Cube Extrapolation</a><span>2021.07.24</span>
+                </div>
+                
+                <div class="clearfix">
+                    <a href="noordzij-classification.html">Typeface Classification under Noordzij’s Cube Model</a><span>2021.07.24</span>
+                </div>
+                
+                <div class="clearfix">
+                    <a href="inktrap.html">Study on Ink Traps</a><span>2021.07.29</span>
+                </div>
+                
+                <div class="clearfix">
+                    <a href="bezier.html">A Sound Reactive Drawing Tool Based on Bézier Curves and Grid</a><span>2021.08.01</span>
+                </div>
+            </div>
             
         </div>
+        <!-- <div id="mouseX" class="grid"></div>
+        <div id="mouseY" class="grid"></div> -->
     </body>
 </html>
