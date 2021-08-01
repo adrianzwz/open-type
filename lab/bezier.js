@@ -8,22 +8,42 @@ var s = 0.25;
 var s0 = true, g = true;
 var sa = true, fa = true;
 var sb = false, fb = false;
-var mic;
+var mA1 = false, mA2 = false;
+var vol;
+
+const meter = new Tone.Meter();
+const mic = new Tone.UserMedia().connect(meter);
 
 //lines.push([]);
 
 function setup() {
     //createCanvas(800, 800);
-    createCanvas(windowWidth, windowHeight-100);
+    var canvas = createCanvas(windowWidth, windowHeight-100);
+    canvas.mousePressed(function() {
+        mic.open();
+    });
+
     frameRate(30);
     cursorX = round(mouseX/gridX)*gridX;
     cursorY = round(mouseY/gridY)*gridY;
 
-    // mic = new p5.AudioIn();
-    // mic.start();
+    
 }
 
 function draw() {
+
+    meter.normalRange = true;
+    meter.smoothing = 0.98;
+    vol = meter.getValue();
+    //console.log(vol);
+    if(mA1) {
+        // a1 = 1 - vol * vol * vol * 16;
+        a1 = 1 - vol ** 3 * 16;
+    }
+    if(mA2) {
+        a2 = vol * vol * vol * 16;
+    }
+
     background(255);
 
     noFill();
@@ -41,9 +61,7 @@ function draw() {
     stroke(0);
     noStroke();
     
-    // var vol = mic.getLevel();
-    // a1 = vol;
-    // console.log(vol);
+    
 
     //drawing multiple lines
     for(i = 0; i < lines.length; i++) {
@@ -309,6 +327,32 @@ $(function(){
             fb = true;
         } else {
             fb = false;
+        }
+    });
+
+    //==========
+
+    $('#mA1 .boolean').on('click', function() {
+        $(this).toggleClass('is-active');
+        if ( $(this).hasClass('is-active') ) {
+            mA1 = true;
+            mic.open();
+        } else {
+            mA1 = false;
+            if(!mA2) mic.close();
+        }
+    });
+
+    //==========
+
+    $('#mA2 .boolean').on('click', function() {
+        $(this).toggleClass('is-active');
+        if ( $(this).hasClass('is-active') ) {
+            mA2 = true;
+            mic.open();
+        } else {
+            mA2 = false;
+            if(!mA1) mic.close();
         }
     });
 
