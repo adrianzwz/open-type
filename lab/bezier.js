@@ -19,8 +19,8 @@ function setup() {
     cursorX = round(mouseX/gridX)*gridX;
     cursorY = round(mouseY/gridY)*gridY;
 
-    mic = new p5.AudioIn();
-    mic.start();
+    // mic = new p5.AudioIn();
+    // mic.start();
 }
 
 function draw() {
@@ -41,9 +41,9 @@ function draw() {
     stroke(0);
     noStroke();
     
-    var vol = mic.getLevel();
-    a1 = vol;
-    //console.log(vol);
+    // var vol = mic.getLevel();
+    // a1 = vol;
+    // console.log(vol);
 
     //drawing multiple lines
     for(i = 0; i < lines.length; i++) {
