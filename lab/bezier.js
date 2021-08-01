@@ -18,10 +18,7 @@ const mic = new Tone.UserMedia().connect(meter);
 
 function setup() {
     //createCanvas(800, 800);
-    var canvas = createCanvas(windowWidth, windowHeight-100);
-    canvas.mousePressed(function() {
-        mic.open();
-    });
+    createCanvas(windowWidth, windowHeight-100);
 
     frameRate(30);
     cursorX = round(mouseX/gridX)*gridX;
