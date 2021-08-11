@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>a_a’s lab | Spread</title>
+        <meta charset="utf-8">
+        <script src="../jquery-3.4.1.min.js"></script>
+        <script src="../rangeslider.js"></script>
+        <link rel="stylesheet" href="../rangesliderCustom.css"/>
+
+        <script src="p5.js"></script>
+        <script src="spread.js"></script>
+        <style>
+
+            @font-face {
+            font-family: "Mono";
+            src: url("NectoMono-Regular.otf") format("opentype");
+            }
+            :root {
+                --main: #000;
+                --bg: #fff;
+            }
+            body {
+                font-family: Mono;
+                font-size: 12px;
+                margin: 0;
+                height: 100%;
+                background: var(--bg);
+                cursor: crosshair;
+                /* overflow: hidden; */
+            }
+            p { margin: 0; }
+
+            #info { padding: 10px; }
+
+            #options { margin-top: 10px; }
+
+            .op-unit { width: 200px; margin-right: 10px; }
+            .op-unit .text { margin-bottom: 10px; }
+            .b-unit { width: 100px; margin-left: 0px; }
+            .b-unit .text { margin-bottom: 5px; }
+
+            .boolean {
+                background: #fff;
+                width: 15px;
+                border: #000 1px solid;
+                box-sizing: border-box;
+                height: 15px;
+                cursor: pointer;
+                margin-right: 5px;
+            }
+            .boolean.is-active {
+                background: #000;
+            }
+
+
+            .left { float: left; }
+            .right { float: right; }
+            .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+        </style>
+    </head>
+    <body>
+        <main>
+
+        </main>
+        <div id="info">
+            <p>
+                
+            </p>
+        </div>
+
+    </body>
+</html>

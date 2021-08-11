@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>a_a’s lab | Study on Ink Traps</title>
+        <meta charset="utf-8">
+        <script src="../jquery-3.4.1.min.js"></script>
+        <script src="../rangeslider.js"></script>
+        <link rel="stylesheet" href="../rangesliderCustom.css"/>
+
+        <script src="spikes.js"></script>
+        <style>
+
+            @font-face {
+            font-family: "font";
+            src: url("spikes-Regular.otf") format("opentype");
+            }
+            @font-face {
+            font-family: "Mono";
+            src: url("NectoMono-Regular.otf") format("opentype");
+            }
+            :root {
+                --main: #fff;
+                --bg: #000;
+            }
+            body {
+                font-family: Mono;
+                font-size: 12px;
+                margin: 0;
+                height: 100%;
+                background: var(--bg);
+                cursor: crosshair;
+                overflow: hidden;
+            }
+            #demo-container {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%) translateY(-0px);
+                width: 100vw;
+                max-height: 100vh;
+                overflow: scroll;
+                padding: 50px 50px 100px 50px;
+                box-sizing: border-box;
+            }
+            #demo {
+                font-family: spikes;
+                /* font-variation-settings: 'wght' 50; */
+                font-size: 160px;
+                color: var(--main);
+                text-align: center;
+                margin: 0;
+                line-height: 1;
+                cursor: text;
+                line-break: anywhere;
+            }
+            #demo:focus {
+                border: none;
+                outline: none;
+            }
+            #demo::selection {
+				background-color: var(--main);
+				color: var(--bg);
+			}
+
+
+            #options {
+                /* z-index: 1000; */
+                color: var(--main);
+                width: 200px;
+                position: absolute;
+                left: 50%;
+                bottom: 30px;
+                transform: translateX(-50%);
+            }
+            .label { float: left; }
+            .value { float: right; }
+
+            .clearfix::after { content: " "; display: block;  height: 0;  clear: both; }
+
+            /*==================================================*/
+            /*==================================================*/
+            /*==================================================*/
+
+            .rangeslider {
+                background: var(--main);
+            }
+            .rangeslider__fill {
+                background: var(--main);
+            }
+            .rangeslider__handle {
+                background: var(--bg);
+                border: 1px solid var(--main);
+            }
+            .rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
+                background: var(--main);
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="demo-container">
+            <p id="demo" contenteditable="true" spellcheck="false">
+                ABCDEFGHILMNORSTUVabcdefghilmnopqrstuv
+            </p>
+        </div>
+        <div id="options">
+            <div id="size" class="op-unit">
+                <div class="text clearfix">
+                    <p class="label">Size</p>
+                    <p class="value">160</p>
+                </div>
+                <input type="range" min="24" max="480" step="1" value="160">
+            </div>
+        </div>
+    </body>
+</html>
