@@ -723,10 +723,10 @@ var FontCollectionData = {
 //====================================================================================================
 	'Lexend': { 
 		name:			'Lexend', 
-		style:			'7 styles', 
+		style:			'9 styles (variable)', 
 		link:			'Google Fonts', 
 		linkURL:		'https://fonts.google.com/specimen/Lexend',
-		displayStyle:	"font-weight: 500;",
+		displayStyle:	"font-variation-settings: 'wght' 500;",
 		sizeAdjust:		1,
 		//----------------------------------------------------------------------------------------------------
 		sampleString:	'What if we could change the way the world reads, starting with a font designed to adjust specifically for your needs?',
@@ -737,17 +737,26 @@ var FontCollectionData = {
 			tracking:	0,
 			leading:	1.15,
 			align:		'left',
-			variable:	{},
+			variable:	{
+				'wght':		500
+			},
 			openType:	{
 				'ss01':	1
 			}
 		},
 		//----------------------------------------------------------------------------------------------------
 		fontProps:		{
-			weights:	[2,3,4,5,6,7,8],
+			weights:	[],
 			hasItalic:	false,
-			isVariable:	false,
-			axis:		{}
+			isVariable:	true,
+			axis:		{
+				'wght':		{
+					axisName:	'Weight',
+					axisMax:	900,
+					axisMin:	100,
+					axisStep:	10
+				}
+			}
 		},
 		//----------------------------------------------------------------------------------------------------
 		description:	'',
