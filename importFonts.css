@@ -87,3 +87,15 @@
   font-style: normal;
   src: url("fonts/Lexend-VariableFont_wght.ttf") format("opentype");
 }
+
+/*ARCHIVO*/
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  src: url("fonts/Archivo-VariableFont_wdth,wght.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  src: url("fonts/Archivo-Italic-VariableFont_wdth,wght.ttf") format("opentype");
+}

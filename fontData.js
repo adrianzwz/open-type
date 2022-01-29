@@ -18,6 +18,110 @@ var OpenTypeFeatureNames = {
 var FontCollectionData = {
 
 //====================================================================================================
+'MontaguSlab': { 
+	name:			'Montagu Slab', 
+	style:			'7 styles (variable)', 
+	link:			'Google Fonts', 
+	linkURL:		'https://fonts.google.com/specimen/Montagu+Slab',
+	displayStyle:	"font-variation-settings: 'wght' 400, 'opsz' 144;",
+	sizeAdjust:		1,
+	//----------------------------------------------------------------------------------------------------
+	sampleString:	'Bolder and more robust than the modern, yet lighter and more refined than the Egyptian, the Ionic with its bracketed serif was another innovation of the nineteenth century.',
+	sampleStyle:	{
+		sizeI:		5,
+		weightI: 	7,
+		italicI:	0,
+		tracking:	0, // in 1/1000 em
+		leading:	1.1,
+		align:		'left',
+		variable:	{
+			'wght':		160,
+			'opsz':		90,
+		},
+		openType:	{
+			'liga':	1,
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	fontProps:		{
+		weights:	[],
+		hasItalic:	false,
+		isVariable:	true,
+		axis:		{
+			'wght':		{
+				axisName:	'Weight',
+				axisMax:	700,
+				axisMin:	100,
+				axisStep:	10
+			},
+			'opsz':		{
+				axisName:	'Optical Size',
+				axisMax:	144,
+				axisMin:	16,
+				axisStep:	1
+			},
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	description:	'',
+	designer:		'Květoslav Bartoš',
+	foundry:		'Florian Karsten Typefaces',
+	release:		'2021',
+},
+
+//====================================================================================================
+'Archivo': { 
+	name:			'Archivo', 
+	style:			'18 styles (variable)', 
+	link:			'Google Fonts', 
+	linkURL:		'https://fonts.google.com/specimen/Archivo',
+	displayStyle:	"font-variation-settings: 'wght' 800, 'wdth' 70;",
+	sizeAdjust:		1,
+	//----------------------------------------------------------------------------------------------------
+	sampleString:	'Darius Wells of New York invented the means for mass producing letters in 1827, and published the first known wood type catalog in 1828.',
+	sampleStyle:	{
+		sizeI:		8,
+		weightI: 	7,
+		italicI:	0,
+		tracking:	0, // in 1/1000 em
+		leading:	0.8,
+		align:		'left',
+		variable:	{
+			'wght':		900,
+			'wdth':		62,
+		},
+		openType:	{
+			'liga':	1,
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	fontProps:		{
+		weights:	[],
+		hasItalic:	true,
+		isVariable:	true,
+		axis:		{
+			'wght':		{
+				axisName:	'Weight',
+				axisMax:	900,
+				axisMin:	100,
+				axisStep:	10
+			},
+			'wdth':		{
+				axisName:	'Width',
+				axisMax:	125,
+				axisMin:	62,
+				axisStep:	1
+			},
+		}
+	},
+	//----------------------------------------------------------------------------------------------------
+	description:	'',
+	designer:		'',
+	foundry:		'Omnibus Type',
+	release:		'',
+},
+
+//====================================================================================================
 'Fraunces': { 
 	name:			'Fraunces', 
 	style:			'108 styles (variable)', 
