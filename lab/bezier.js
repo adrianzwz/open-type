@@ -12,7 +12,11 @@ var mA1 = false, mA2 = false;
 var vol;
 
 const meter = new Tone.Meter();
-const mic = new Tone.UserMedia().connect(meter);
+// const mic = new Tone.UserMedia().connect(meter);
+const mic = new Tone.UserMedia();
+mic.open();
+// connect mic to the meter
+mic.connect(meter);
 
 //lines.push([]);
 
@@ -29,16 +33,20 @@ function setup() {
 
 function draw() {
 
-    meter.normalRange = true;
-    meter.smoothing = 0.95;
+    // meter.normalRange = true;
+    meter.normalRange = false;
+    // meter.smoothing = 0.95;
+    meter.smoothing = 0.97;
     vol = meter.getValue();
     //console.log(vol);
     if(mA1) {
         // a1 = 1 - vol * vol * vol * 16;
-        a1 = 1 - vol ** 3 * 16;
+        // a1 = 1 - vol ** 3 * 16;
+        a1 = mapRangeClamp(vol, -5, -30, 0, 2);
     }
     if(mA2) {
-        a2 = vol * vol * vol * 16;
+        // a2 = vol * vol * vol * 16;
+        a2 = mapRangeClamp(vol, -5, -30, 2, 0);
     }
 
     background(255);
@@ -202,6 +210,22 @@ function keyPressed() {
         lines = [[]];
         lineI = 0;
     }
+}
+
+function mapRange(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
+function mapRangeClamp(value, low1, high1, low2, high2) {
+    var r = low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+    if (high2 > low2) {
+        if (r < low2) r = low2;
+        if (r > high2) r = high2;
+    }
+    if (high2 < low2) {
+        if (r > low2) r = low2;
+        if (r < high2) r = high2;
+    }
+    return r;
 }
 
 $(function(){
