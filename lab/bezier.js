@@ -1,4 +1,5 @@
-var gridX = 60, gridY = 60;
+// 60,60
+var gridX = 30, gridY = 30;
 var cursorX, cursorY;
 var lines = [[]], lineI = 0;
 var points = []; // deprecated
@@ -28,6 +29,8 @@ function setup() {
     cursorX = round(mouseX/gridX)*gridX;
     cursorY = round(mouseY/gridY)*gridY;
 
+    strokeCap(SQUARE);
+
     
 }
 
@@ -36,17 +39,18 @@ function draw() {
     // meter.normalRange = true;
     meter.normalRange = false;
     // meter.smoothing = 0.95;
-    meter.smoothing = 0.97;
+    // meter.smoothing = 0.97;
+    meter.smoothing = 0.75;
     vol = meter.getValue();
     //console.log(vol);
     if(mA1) {
         // a1 = 1 - vol * vol * vol * 16;
         // a1 = 1 - vol ** 3 * 16;
-        a1 = mapRangeClamp(vol, -5, -30, 0, 2);
+        a1 = mapRangeClamp(vol, -5, -36, 0, 2);
     }
     if(mA2) {
         // a2 = vol * vol * vol * 16;
-        a2 = mapRangeClamp(vol, -5, -30, 2, 0);
+        a2 = mapRangeClamp(vol, -5, -36, 2, 0);
     }
 
     background(255);
